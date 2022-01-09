@@ -1,0 +1,14 @@
+theme = "sop"
+
+disableKinds = ["taxonomy", "term", "RSS", "sitemap"]
+relativeURLs = true
+buildFuture = true
+
+[languages]
+[languages.pl]
+    title = "Systemy operacyjne"
+    weight = 1
+[languages.en]
+    title = "Operating systems"
+    weight = 2
+
