@@ -6,4 +6,5 @@ layout: single
 ---
 
 - [Harmonogram]({{< ref harmonogram >}})
+- [Obsada]({{< ref obsada >}})
  
