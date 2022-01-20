@@ -303,7 +303,7 @@ Rozwiązanie dzielimy na 2 etapy
 
 ## Przykładowe zadanie do samodzielnego rozwiązania
 
-Wykonaj przykładowe [ćwiczenie](125.html) z poprzednich lat. To zadanie szacuję na 60 minut, jeśli wyrobisz się w tym czasie to znaczy, że jesteś dobrze przygotowany/a do zajęć. Pamiętaj, że w aktualnym układzie zajęć będzie dane zadnie na około 1,5 godziny, więc trochę bardziej pracochłonne.
+Wykonaj przykładowe [ćwiczenie]({{< ref "../l1-example" >}}) z poprzednich lat. To zadanie szacuję na 60 minut, jeśli wyrobisz się w tym czasie to znaczy, że jesteś dobrze przygotowany/a do zajęć. Pamiętaj, że w aktualnym układzie zajęć będzie dane zadnie na około 1,5 godziny, więc trochę bardziej pracochłonne.
 
 ## Kody źródłowe z treści tutoriala
 

@@ -26,10 +26,10 @@ layout: single
 
 ## Opisy ćwiczeń laboratoryjnych
 	
--   [L1 FIFO/pipe (3g)](67.html)
--   [L2 kolejki POSIX (3g)](102.html)
--   [L3 Gniazda pselect (3g)](104.html) 
--   [L4  Gniazda, wątki, pamięć wspólna, synchronizacja (3g)](107.html)
+-   [L1 FIFO/pipe (3g)]({{< ref "lab/l1" >}})
+-   [L2 kolejki POSIX (3g)]({{< ref "lab/l2" >}})
+-   [L3 Gniazda pselect (3g)]({{< ref "lab/l3" >}}) 
+-   [L4  Gniazda, wątki, pamięć wspólna, synchronizacja (3g)]({{< ref "lab/l4" >}})
 
 ## Inne materiały
 

@@ -6,7 +6,7 @@ layout: single
 ---
 
 - [Program przedmiotu]({{< ref program >}})
-- [Regulamin i zasady oceniania]({{ < ref zasady > }})
+- [Regulamin i zasady oceniania]({{< ref zasady >}})
 - [Harmonogram]({{< ref harmonogram >}})
 - [Materiały]({{< ref materialy >}})
  
