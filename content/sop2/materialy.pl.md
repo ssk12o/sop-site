@@ -10,7 +10,7 @@ menu: "sop2"
 
 -   [W1 Wprowadzenie do komunikacji międzyprocesowej (IPC). Łącza.]({{< ref "wyk/w1" >}})
 -   [W2 Komunikacja międzyprocesowa POSIX: pamięć wspólna i kolejki komunikatów]({{< ref "wyk/w2" >}})
--   [W3 Synchronizacja. Zakleszczenia.](79.html)
+-   [W3 Synchronizacja. Zakleszczenia.]({{< ref "wyk/w3" >}})
 -   [W4 Synchronizacja POSIX.](88.html)
 -   [W5 Wprowadzenie do sieci TCP/IP.](89.html)
 -   [W6 Interfejs gniazd.](90.html)
