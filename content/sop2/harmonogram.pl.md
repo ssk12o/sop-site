@@ -11,8 +11,8 @@ Semestr letni 2020/2021
 
 | Data | Tytuł |
 | ---- | ----- |
-| 24.02 | [W1 Wprowadzenie do komunikacji międzyprocesowej (IPC). Łącza.](70.html) |
-| 03.03 | [W2 Komunikacja międzyprocesowa POSIX: pamięć wspólna i kolejki komunikatów](71.html) |
+| 24.02 | [W1 Wprowadzenie do komunikacji międzyprocesowej (IPC). Łącza.]({{< ref "wyk/w1" >}}) |
+| 03.03 | [W2 Komunikacja międzyprocesowa POSIX: pamięć wspólna i kolejki komunikatów]({{< ref "wyk/w2" >}}) |
 | 10.03 | [W3 Synchronizacja. Zakleszczenia.](79.html) |
 | 17.03 | [W4 Synchronizacja POSIX.](88.html) |
 | 24.03 | [W5 Wprowadzenie do sieci TCP/IP.](89.html) |
