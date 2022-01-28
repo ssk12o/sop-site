@@ -1,0 +1,30 @@
+main {
+    max-width: 60em;
+}
+
+.dlaN, .uwagi, .wstepne {
+    border: solid 0.5em yellow;
+    padding: .2em;
+    margin-top: 1em;
+}
+
+.cwiczenie {
+    border: dotted 0.5em blue;
+    padding: .2em;
+    margin-top: 1em;
+}
+
+.odpowiedz {
+    opacity: 0;
+    font-style: italic;
+}
+
+.odpowiedz:hover {
+    opacity: 1;
+}
+
+pre {
+    margin-left: 1.5em;
+    padding-left: 0.5em;
+    border-left: solid thick ;
+}
