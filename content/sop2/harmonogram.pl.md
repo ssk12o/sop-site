@@ -14,10 +14,10 @@ Semestr letni 2020/2021
 | 24.02 | [W1 Wprowadzenie do komunikacji międzyprocesowej (IPC). Łącza.]({{< ref "wyk/w1" >}}) |
 | 03.03 | [W2 Komunikacja międzyprocesowa POSIX: pamięć wspólna i kolejki komunikatów]({{< ref "wyk/w2" >}}) |
 | 10.03 | [W3 Synchronizacja. Zakleszczenia.]({{< ref "wyk/w3" >}}) |
-| 17.03 | [W4 Synchronizacja POSIX.](88.html) |
-| 24.03 | [W5 Wprowadzenie do sieci TCP/IP.](89.html) |
-| 07.04 | [W6 Interfejs gniazd.](90.html) |
-| 14.04 | [W7 Programowanie sieciowe.](91.html) |
+| 17.03 | [W4 Synchronizacja POSIX.]({{< ref "wyk/w4" >}}) |
+| 24.03 | [W5 Wprowadzenie do sieci TCP/IP.]({{< ref "wyk/w5" >}}) |
+| 07.04 | [W6 Interfejs gniazd.]({{< ref "wyk/w6" >}}) |
+| 14.04 | [W7 Programowanie sieciowe.]({{< ref "wyk/w7" >}}) |
 | 21.04 | [K1/1 **Kolokwium 1.**](151.html), [W8. Zagadnienia bezpieczeństwa sieciowego.](92.html) |
 | 28.04 | [W9 Zarządzanie pamięcią operacyjną.](93.html) |
 | 05.05 | [W10 Pamięć wirtualna.](94.html) |
