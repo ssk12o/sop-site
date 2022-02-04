@@ -18,10 +18,10 @@ Semestr letni 2020/2021
 | 24.03 | [W5 Wprowadzenie do sieci TCP/IP.]({{< ref "wyk/w5" >}}) |
 | 07.04 | [W6 Interfejs gniazd.]({{< ref "wyk/w6" >}}) |
 | 14.04 | [W7 Programowanie sieciowe.]({{< ref "wyk/w7" >}}) |
-| 21.04 | [K1/1 **Kolokwium 1.**](151.html), [W8. Zagadnienia bezpieczeństwa sieciowego.](92.html) |
-| 28.04 | [W9 Zarządzanie pamięcią operacyjną.](93.html) |
-| 05.05 | [W10 Pamięć wirtualna.](94.html) |
-| 19.05 | [W11 Systemy plików.](95.html) |
+| 21.04 | [K1/1 **Kolokwium 1.**](151.html), [W8. Zagadnienia bezpieczeństwa sieciowego.]({{< ref "wyk/w8" >}}) |
+| 28.04 | [W9 Zarządzanie pamięcią operacyjną.]({{< ref "wyk/w9" >}}) |
+| 05.05 | [W10 Pamięć wirtualna.]({{< ref "wyk/w10" >}}) |
+| 19.05 | [W11 Systemy plików.]({{< ref "wyk/w11" >}}) |
 | 26.05 | [W12 Realizacje systemów plików.](96.html), Rozproszone systemy plików. |
 | 02.06 | [W13 Systemy czasu rzeczywistego.](97.html) |
 | 09.06 | [K2/1 **Kolokwium 2.**](152.html), [W14. Ochrona i bezpieczeństwo.](98.html) |
