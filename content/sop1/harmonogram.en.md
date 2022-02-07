@@ -32,7 +32,7 @@ Winter semester of 2021/2022
 | 29.11.2021 | [L2 Processes and signals]({{< ref "lab/l2" >}})               |
 | 6.12.2021  | [L2 Processes and signals]({{< ref "lab/l2" >}})               |
 | 13.12.2021 | [L3 Threads and mutexes]({{< ref "lab/l3" >}})                 |
-| 20.12.2021 | [L3 Threads and mutexes]({{< ref "lab/l4" >}})                 |
+| 20.12.2021 | [L3 Threads and mutexes]({{< ref "lab/l3" >}})                 |
 | 3.01.2022  | [L4 AIO]({{< ref "lab/l4" >}})                                 |
 | 17.01.2022 | [L4 AIO]({{< ref "lab/l4" >}})                                 |
 | 24.01.2022 | L5 Retakes pt. 1                                               |

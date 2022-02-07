@@ -62,9 +62,7 @@ Zamiast nowakj należy wstawić swój login wydziałowy.
 
   - **UWAGA** nie wolno dowolnie mieszać argumentów polecenia tar, np podanie:
     
-    ``` 
-     $ tar -cjf prog1.c nowakj.tar.bz2 
-    ```
+    ~~`$ tar -cjf prog1.c nowakj.tar.bz2`~~
     
     spowoduje skasowanie pliku z kodem źródłowym \!\!\!
 
