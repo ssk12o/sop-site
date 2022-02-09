@@ -2,6 +2,7 @@ theme = "sop"
 
 disableKinds = ["taxonomy", "term", "RSS", "sitemap"]
 buildFuture = true
+defaultContentLanguageInSubdir = true
 
 [languages]
 [languages.pl]
@@ -15,3 +16,6 @@ buildFuture = true
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+
+[minify]
+minifyOutput = true
