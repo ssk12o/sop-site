@@ -18,7 +18,7 @@ Let's do a simple example to familiarize you with routines required during the g
 
 ### The task.
 
-*Cel:*Write a trivial program "hello world", compile it, run it , compress the source and copy to the required destination . *What student has to know:*
+*Goal:* Write a trivial program "hello world", compile it, run it , compress the source and copy to the required destination . *What student has to know:*
 
   - know one of available (in our labs) programmers environment for Linux
   - know how to do basic compilation with gcc
