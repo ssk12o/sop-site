@@ -29,5 +29,4 @@ draft: false
 1.  Podręcznik: rozdz. 4.4 (Procesy współpracujące), 4.5 (Komunikacja międzyprocesowa).
 2.  Slajdy: [IPC\_wstęp.pdf]({{< resource "IPC_wstęp.pdf" >}}), [POSIX-łącza.pdf]({{< resource "Łącza_POSIX.pdf" >}})
 3.  Rozdział 15 w dokumentacji *the GNU C library*: [Pipes and FIFOs](http://www.gnu.org/software/libc/manual/html_node/Pipes-and-FIFOs.html#Pipes-and-FIFOs)
-4.  Programy przykładowe dla [łącz](http://alpha.mini.pw.edu.pl/~opalskil/OS2src/FIFO/index_PL.html)
-5.  Litera uzupełniająca: rozdz. 4 (Łącza i kolejki FIFO) z: W.R. Stevens, Unix programowanie usług sieciowych, t. 2, wyd. 2: Komunikacja międzyprocesowa
+4.  Litera uzupełniająca: rozdz. 4 (Łącza i kolejki FIFO) z: W.R. Stevens, Unix programowanie usług sieciowych, t. 2, wyd. 2: Komunikacja międzyprocesowa

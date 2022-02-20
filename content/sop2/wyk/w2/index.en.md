@@ -37,6 +37,5 @@ draft: false
 ## Reference
 
 1.  Slides: [IPC\_1en.pdf]({{< resource "IPC_1en_3.pdf" >}}),
-2.  Example programs: [Unix SysV](http://alpha.mini.pw.edu.pl/~opalskil/OS2src/MQ_SHM_SysV/index_EN.html), [POSIX](http://alpha.mini.pw.edu.pl/~opalskil/OS2src/MQ_SHM_Posix/index_EN.html)
-3.  Supplementary reading: W.R. Stevens, Unix Network Progamming, Vol. 2, 2nd Ed.: Interprocess Communications,  
+2.  Supplementary reading: W.R. Stevens, Unix Network Progamming, Vol. 2, 2nd Ed.: Interprocess Communications,
     Chapters: 1 (Introduction), 2 (Posix IPC), 3 (System V IPC), 5 (Posix Message Queues), 6 (System V Message Queues), 12 (Shared Memory Introduction), 13 (Posix Shared Memory), 14 (System V Shared Memory)

@@ -28,5 +28,4 @@ Kolokwia wykładowe oczekują od studenta znajomości ogólnych koncepcji budowy
 
 1.  Slajdy: [Inet\_2.pdf]({{< resource "Inet_2_7.pdf" >}})
 2.  Dokumentacja *The GNU C library*: rozdz. 16: [Sockets](http://www.gnu.org/software/libc/manual/html_node/#toc-Sockets-1), rozdz. 13.6 [Fast Scatter-Gather I/O](http://www.gnu.org/software/libc/manual/html_node/Scatter_002dGather.html#Scatter_002dGather)
-3.  Kod źródłowy przykładowych programów wykorzystujących interfejs [gniazd](http://alpha.mini.pw.edu.pl/~opalskil/OS2src/Inet/index_PL.html).
-4.  Literatura uzupełniająca: W.R. Stevens, Unix programowanie usług sieciowych, t. 1, wyd. 2: API: gniazda i XTI
+3.  Literatura uzupełniająca: W.R. Stevens, Unix programowanie usług sieciowych, t. 1, wyd. 2: API: gniazda i XTI

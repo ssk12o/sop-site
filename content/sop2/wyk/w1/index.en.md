@@ -28,5 +28,4 @@ draft: false
 1.  Textbook: chapter. 3.4 (Interprocess communication).
 2.  Slides: [IPC\_intro.pdf]({{< resource "IPC_intro.pdf" >}}), [POSIX-pipes.pdf]({{< resource "POSIX-pipes.pdf" >}})
 3.  Section 15 of the GNU C library documentation: [Pipes and FIFOs](http://www.gnu.org/software/libc/manual/html_node/Pipes-and-FIFOs.html#Pipes-and-FIFOs)
-4.  Example programs for [pipes and FIFOs](http://alpha.mini.pw.edu.pl/~opalskil/OS2src/FIFO/index_EN.html)
-5.  Supplementary reading: Ch. 4 (Pipes and FIFOs) of the book: W.R. Stevens, Unix Network Progamming, Vol. 2, 2nd Ed.: Interprocess Communications
+4.  Supplementary reading: Ch. 4 (Pipes and FIFOs) of the book: W.R. Stevens, Unix Network Progamming, Vol. 2, 2nd Ed.: Interprocess Communications

@@ -36,7 +36,6 @@ draft: false
 
 1.  Slides: [IPC\_2en.pdf]({{< resource "IPC_2en_4.pdf" >}})
 2.  Section 27.1 of the GNU C library documentation: [Semaphores](https://www.gnu.org/software/libc/manual/html_node/Semaphores.html#Semaphores)
-3.  Example programs related to synchronization: [Unix SysV semaphore sets](http://alpha.mini.pw.edu.pl/~opalskil/OS2src/Syn_SysV/index_EN.html), [POSIX semaphores, mutexes, condition variables](http://alpha.mini.pw.edu.pl/~opalskil/OS2src/Syn_Posix/index_EN.html)
-4.  Supplementary reading: W.R. Stevens, Unix Network Progamming, Vol. 2, 2nd Ed.  
+3.  Supplementary reading: W.R. Stevens, Unix Network Progamming, Vol. 2, 2nd Ed.  
     Chapters: 7 (Mutexes and Condition Variables), 8 (Read-Write Locks), 10 (Posix semaphores), 11 (System V Semaphores).
 

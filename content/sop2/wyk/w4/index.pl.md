@@ -35,7 +35,6 @@ draft: false
 
 1.  Slajdy: [IPC\_2.pdf]({{< resource "IPC_2_7.pdf" >}})
 2.  Rozdz. 27.1 w dokumentacji *the GNU C library*: [Semaphores](https://www.gnu.org/software/libc/manual/html_node/Semaphores.html#Semaphores)
-3.  Kod źródłowy przykładowych programów związanych z synchronizacją: [Unix System V IPC](http://alpha.mini.pw.edu.pl/~opalskil/OS2src/Syn_SysV/index_PL.html), [POSIX IPC](http://alpha.mini.pw.edu.pl/~opalskil/OS2src/Syn_Posix/index_PL.html)
-4.  Literatura uzupełniająca: W.R. Stevens, Unix programowanie usług sieciowych, t. 2, wyd. 2: Komunikacja międzyprocesowa  
+3.  Literatura uzupełniająca: W.R. Stevens, Unix programowanie usług sieciowych, t. 2, wyd. 2: Komunikacja międzyprocesowa
     Rozdziały: 7 (Muteksy i zmienne warunku), 8 (Rygle odczytu zapisu), 10 (Semafory posiksowe), 11 (Semafory Systemu V).
 

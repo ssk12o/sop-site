@@ -29,6 +29,5 @@ During lecture tests knowledge and understanding of general concepts and socket 
 
 1.  Slides: [Inet\_2en.pdf]({{< resource "Inet_2en_9.pdf" >}})
 2.  Chapter 16 in *the GNU C library* manual: [Sockets](http://www.gnu.org/software/libc/manual/html_node/#toc-Sockets-1)
-3.  [Example code](http://alpha.mini.pw.edu.pl/~opalskil/OS2src/Inet/index_EN.html) related to socket interface
-4.  Supplementary reading: W.R. Stevens, Unix Network Progamming, Vol. 1, 2nd Ed.
+3.  Supplementary reading: W.R. Stevens, Unix Network Progamming, Vol. 1, 2nd Ed.
 

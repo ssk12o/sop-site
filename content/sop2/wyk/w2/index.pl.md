@@ -37,5 +37,4 @@ draft: false
 ### Materiały
 
 1.  Slajdy: [IPC\_1.pdf]({{< resource "IPC_1.pdf" >}})
-2.  Programy przykładowe: [Unix SysV](http://alpha.mini.pw.edu.pl/~opalskil/OS2src/MQ_SHM_SysV/index_PL.html), [POSIX](http://alpha.mini.pw.edu.pl/~opalskil/OS2src/MQ_SHM_Posix/index_PL.html)
-3.  Litera uzupełniająca: W.R. Stevens, Unix programowanie usług sieciowych, t. 2, wyd. 2: Komunikacja międzyprocesowa Rozdziały: 1 (Podstawowe określenia), 2 (Posiksowa komunikacja międzyprocesowa), 3 (Komunikacja międzyprocesowa w Systemie V), 5 (Kolejki komunikatów standardu POSIX), 6 (Kolejki komunikatów w Systemie V), 12 (Podstawy na temat pamięci wspólnej), 13 (Posiksowa pamięć wspólna), 14 (Pamięć wspólna Systemu V)
+2.  Litera uzupełniająca: W.R. Stevens, Unix programowanie usług sieciowych, t. 2, wyd. 2: Komunikacja międzyprocesowa Rozdziały: 1 (Podstawowe określenia), 2 (Posiksowa komunikacja międzyprocesowa), 3 (Komunikacja międzyprocesowa w Systemie V), 5 (Kolejki komunikatów standardu POSIX), 6 (Kolejki komunikatów w Systemie V), 12 (Podstawy na temat pamięci wspólnej), 13 (Posiksowa pamięć wspólna), 14 (Pamięć wspólna Systemu V)
