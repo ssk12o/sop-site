@@ -19,7 +19,7 @@ struct two_words {
 } mem;
 #else
 struct two_words {
-	int  a, b;
+	int a, b;
 } mem;
 #endif
 
@@ -35,8 +35,7 @@ void handler(int signum)
 
 int main(void)
 {
-	static struct two_words zeros = { 0, 0 }, ones = {
-	1, 1};
+	static struct two_words zeros = { 0, 0 }, ones = { 1, 1 };
 	signal(SIGALRM, handler);
 	mem = zeros;
 	alarm(1);
