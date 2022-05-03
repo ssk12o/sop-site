@@ -1,16 +1,20 @@
 /* sighand.c - illustrates use of thread masks.
 Send SIGINT in different phases of process operation.
 Can you explain process behaviour? */
+
 #include <pthread.h>
 #include <signal.h>
 #include <stdio.h>
 #include <unistd.h>
+
 sigset_t new;
 struct sigaction act;
+
 void inthandler(int sig)
 {
 	printf("thread %lu caught signal %d\n", (unsigned long)pthread_self(), sig);
 }
+
 void *sigthread(void *p)
 {
 	pthread_sigmask(SIG_UNBLOCK, &new, NULL);
@@ -20,6 +24,7 @@ void *sigthread(void *p)
 	printf("sigthread is done\n");
 	return NULL;
 }
+
 int main(int argc, char *argv[])
 {
 	pthread_t tid;

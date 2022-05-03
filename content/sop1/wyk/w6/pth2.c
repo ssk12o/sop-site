@@ -1,6 +1,7 @@
 /* pth2.c - The program shows (unexpected?) consequences of concurrent
  * operations on a shared variable by two threads.
  */
+
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>

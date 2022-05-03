@@ -3,10 +3,12 @@
  * as that o parent. In effect operations on each of
  * file descriptors affect common "current position in the file" counter.
  */
+
 #include <fcntl.h>
 #include <stdio.h>
 #include <time.h>
 #include <unistd.h>
+
 int main(void)
 {
 	char c;

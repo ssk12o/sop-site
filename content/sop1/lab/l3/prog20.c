@@ -33,7 +33,7 @@ typedef struct argsModify {
 void ReadArguments(int argc, char **argv, int *studentsCount);
 void *student_life(void *);
 void increment_counter(argsModify_t *args);
-void decrement_counter(argsModify_t *args);
+void decrement_counter(void *_args);
 void msleep(UINT milisec);
 void kick_student(studentsList_t *studentsList);
 
@@ -112,8 +112,9 @@ void increment_counter(argsModify_t *args)
 	pthread_mutex_unlock(&(args->pYearCounters->mxCounters[args->year]));
 }
 
-void decrement_counter(argsModify_t *args)
+void decrement_counter(void *_args)
 {
+	argsModify_t *args = _args;
 	pthread_mutex_lock(&(args->pYearCounters->mxCounters[args->year]));
 	args->pYearCounters->values[args->year] -= 1;
 	pthread_mutex_unlock(&(args->pYearCounters->mxCounters[args->year]));

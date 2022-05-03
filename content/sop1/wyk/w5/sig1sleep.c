@@ -2,11 +2,13 @@
  * - setting a signal handler with sigaction()
  * - a side-effect of signal handling - early termination of sleep() call
  */
+
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+
 void sethandler(int sig, void (*f)(int))
 {
 	struct sigaction sa;

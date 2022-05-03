@@ -1,20 +1,22 @@
 /* pth3.c - this program implements correctly concurrent operations on
  * the same variable by two threads.
  */
+
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
+
 #define prt1(p) fprintf(stderr, p)
 int cnt, n;
 
-pthread_mutex_t blokada = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
 void *worker(void *arg)
 {
 	int i, v;
 
 	for (i = 0; i < n; i++) {
-		if (pthread_mutex_lock(&blokada)) {
+		if (pthread_mutex_lock(&mutex)) {
 			prt1("mutex_lock");
 			return NULL;
 		}
@@ -25,7 +27,7 @@ void *worker(void *arg)
 
 		cnt = v + ((int *)arg)[0];
 
-		if (pthread_mutex_unlock(&blokada)) {
+		if (pthread_mutex_unlock(&mutex)) {
 			prt1("mutex_unlock");
 			return NULL;
 		}

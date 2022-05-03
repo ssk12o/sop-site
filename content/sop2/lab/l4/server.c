@@ -16,8 +16,8 @@
 #include <unistd.h>
 
 #define ERR(source) (perror(source), fprintf(stderr, "%s:%d\n", __FILE__, __LINE__), exit(EXIT_FAILURE))
-#define FS_NUM 10
 
+#define FS_NUM 10
 volatile sig_atomic_t do_work = 1;
 
 void sigint_handler(int sig)

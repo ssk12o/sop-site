@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 #define MAX_LINE 20
 
 int main(int argc, char **argv)

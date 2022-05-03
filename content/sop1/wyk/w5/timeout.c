@@ -2,12 +2,15 @@
  * input. If a line is not entered within 5 seconds - the program exits
  * (time-out). See what happens if the program is run with a parameter ...
  */
+
 #include <errno.h>
 #include <signal.h>
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+
 #define TIMEOUT 5
+
 void hand(int sig)
 {
 	fprintf(stderr, "Timeout!\n");

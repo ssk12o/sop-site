@@ -10,8 +10,10 @@
 #include <sys/types.h>
 #include <time.h>
 #include <unistd.h>
+
 #define BLOCKS 3
 #define SHIFT(counter, x) ((counter + x) % BLOCKS)
+
 void error(char *);
 void usage(char *);
 void siginthandler(int);
@@ -26,12 +28,15 @@ void getindexes(int *, int);
 void cleanup(char **, int);
 void reversebuffer(char *, int);
 void processblocks(struct aiocb *, char **, int, int, int);
+
 volatile sig_atomic_t work;
+
 void error(char *msg)
 {
 	perror(msg);
 	exit(EXIT_FAILURE);
 }
+
 void usage(char *progname)
 {
 	fprintf(stderr, "%s workfile blocksize\n", progname);
@@ -40,10 +45,12 @@ void usage(char *progname)
 	fprintf(stderr, "k - number of iterations\n");
 	exit(EXIT_FAILURE);
 }
+
 void siginthandler(int sig)
 {
 	work = 0;
 }
+
 void sethandler(void (*f)(int), int sig)
 {
 	struct sigaction sa;
@@ -52,6 +59,7 @@ void sethandler(void (*f)(int), int sig)
 	if (sigaction(sig, &sa, NULL) == -1)
 		error("Error setting signal handler");
 }
+
 off_t getfilelength(int fd)
 {
 	struct stat buf;
@@ -59,6 +67,7 @@ off_t getfilelength(int fd)
 		error("Cannot fstat file");
 	return buf.st_size;
 }
+
 void suspend(struct aiocb *aiocbs)
 {
 	struct aiocb *aiolist[1];
@@ -77,6 +86,7 @@ void suspend(struct aiocb *aiocbs)
 	if (aio_return(aiocbs) == -1)
 		error("Return error");
 }
+
 void fillaiostructs(struct aiocb *aiocbs, char **buffer, int fd, int blocksize)
 {
 	int i;
@@ -89,6 +99,7 @@ void fillaiostructs(struct aiocb *aiocbs, char **buffer, int fd, int blocksize)
 		aiocbs[i].aio_sigevent.sigev_notify = SIGEV_NONE;
 	}
 }
+
 void readdata(struct aiocb *aiocbs, off_t offset)
 {
 	if (!work)
@@ -97,6 +108,7 @@ void readdata(struct aiocb *aiocbs, off_t offset)
 	if (aio_read(aiocbs) == -1)
 		error("Cannot read");
 }
+
 void writedata(struct aiocb *aiocbs, off_t offset)
 {
 	if (!work)
@@ -105,6 +117,7 @@ void writedata(struct aiocb *aiocbs, off_t offset)
 	if (aio_write(aiocbs) == -1)
 		error("Cannot write");
 }
+
 void syncdata(struct aiocb *aiocbs)
 {
 	if (!work)
@@ -114,6 +127,7 @@ void syncdata(struct aiocb *aiocbs)
 		error("Cannot sync\n");
 	suspend(aiocbs);
 }
+
 void getindexes(int *indexes, int max)
 {
 	indexes[0] = rand() % max;
@@ -121,6 +135,7 @@ void getindexes(int *indexes, int max)
 	if (indexes[1] >= indexes[0])
 		indexes[1]++;
 }
+
 void cleanup(char **buffers, int fd)
 {
 	int i;
@@ -132,6 +147,7 @@ void cleanup(char **buffers, int fd)
 	if (TEMP_FAILURE_RETRY(fsync(fd)) == -1)
 		error("Error running fsync");
 }
+
 void reversebuffer(char *buffer, int blocksize)
 {
 	int k;
@@ -142,6 +158,7 @@ void reversebuffer(char *buffer, int blocksize)
 		buffer[blocksize - k - 1] = tmp;
 	}
 }
+
 void processblocks(struct aiocb *aiocbs, char **buffer, int bcount, int bsize, int iterations)
 {
 	int curpos, j, index[2];
@@ -167,6 +184,7 @@ void processblocks(struct aiocb *aiocbs, char **buffer, int bcount, int bsize, i
 	writedata(&aiocbs[curpos], bsize * (rand() % bcount));
 	suspend(&aiocbs[curpos]);
 }
+
 int main(int argc, char *argv[])
 {
 	char *filename, *buffer[BLOCKS];

@@ -12,15 +12,14 @@
 #include <sys/time.h>
 #include <sys/types.h>
 #include <unistd.h>
+
 #define ERR(source) (perror(source), fprintf(stderr, "%s:%d\n", __FILE__, __LINE__), exit(EXIT_FAILURE))
 
 #define BACKLOG 3
 #define CHUNKSIZE 500
 #define NMMAX 30
 #define THREAD_NUM 3
-
 #define ERRSTRING "No such file or directory\n"
-
 volatile sig_atomic_t work = 1;
 
 typedef struct {

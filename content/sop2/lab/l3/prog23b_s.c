@@ -12,14 +12,17 @@
 #include <sys/types.h>
 #include <sys/un.h>
 #include <unistd.h>
+
 #define ERR(source) (perror(source), fprintf(stderr, "%s:%d\n", __FILE__, __LINE__), exit(EXIT_FAILURE))
 
 #define BACKLOG 3
 volatile sig_atomic_t do_work = 1;
+
 void sigint_handler(int sig)
 {
 	do_work = 0;
 }
+
 int sethandler(void (*f)(int), int sigNo)
 {
 	struct sigaction act;
@@ -29,6 +32,7 @@ int sethandler(void (*f)(int), int sigNo)
 		return -1;
 	return 0;
 }
+
 int make_socket(int domain, int type)
 {
 	int sock;
@@ -37,6 +41,7 @@ int make_socket(int domain, int type)
 		ERR("socket");
 	return sock;
 }
+
 int bind_local_socket(char *name)
 {
 	struct sockaddr_un addr;
@@ -53,6 +58,7 @@ int bind_local_socket(char *name)
 		ERR("listen");
 	return socketfd;
 }
+
 int bind_tcp_socket(uint16_t port)
 {
 	struct sockaddr_in addr;
@@ -70,6 +76,7 @@ int bind_tcp_socket(uint16_t port)
 		ERR("listen");
 	return socketfd;
 }
+
 int add_new_client(int sfd)
 {
 	int nfd;
@@ -80,10 +87,12 @@ int add_new_client(int sfd)
 	}
 	return nfd;
 }
+
 void usage(char *name)
 {
 	fprintf(stderr, "USAGE: %s socket port\n", name);
 }
+
 ssize_t bulk_read(int fd, char *buf, size_t count)
 {
 	int c;
@@ -100,6 +109,7 @@ ssize_t bulk_read(int fd, char *buf, size_t count)
 	} while (count > 0);
 	return len;
 }
+
 ssize_t bulk_write(int fd, char *buf, size_t count)
 {
 	int c;
@@ -114,6 +124,7 @@ ssize_t bulk_write(int fd, char *buf, size_t count)
 	} while (count > 0);
 	return len;
 }
+
 void calculate(int32_t data[5])
 {
 	int32_t op1, op2, result, status = 1;
@@ -141,6 +152,7 @@ void calculate(int32_t data[5])
 	data[4] = htonl(status);
 	data[2] = htonl(result);
 }
+
 void communicate(int cfd)
 {
 	ssize_t size;
@@ -155,6 +167,7 @@ void communicate(int cfd)
 	if (TEMP_FAILURE_RETRY(close(cfd)) < 0)
 		ERR("close");
 }
+
 void doServer(int fdL, int fdT)
 {
 	int cfd, fdmax;
@@ -184,6 +197,7 @@ void doServer(int fdL, int fdT)
 	}
 	sigprocmask(SIG_UNBLOCK, &mask, NULL);
 }
+
 int main(int argc, char **argv)
 {
 	int fdL, fdT;

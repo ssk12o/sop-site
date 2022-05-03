@@ -50,7 +50,7 @@ int main(int argc, char **argv)
 		default:
 			usage(argv[0]);
 		}
-	if ((NULL == name) || (-1 == perms) || (-1 == size))
+	if ((NULL == name) || ((mode_t)-1 == perms) || (-1 == size))
 		usage(argv[0]);
 	if (unlink(name) && errno != ENOENT)
 		ERR("unlink");

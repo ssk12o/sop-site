@@ -10,11 +10,11 @@
 #include <sys/time.h>
 #include <sys/types.h>
 #include <unistd.h>
+
 #define ERR(source) (perror(source), fprintf(stderr, "%s:%d\n", __FILE__, __LINE__), exit(EXIT_FAILURE))
 #define HERR(source) (fprintf(stderr, "%s(%d) at %s:%d\n", source, h_errno, __FILE__, __LINE__), exit(EXIT_FAILURE))
 
 #define TIMEOUT 15
-
 volatile sig_atomic_t last_signal = 0;
 
 void sigalrm_handler(int sig)
@@ -77,9 +77,7 @@ int main(int argc, char **argv)
 	fd = make_socket();
 	addr = make_address(argv[1], atoi(argv[2]));
 	time = htons(atoi(argv[3]));
-	/*
-     * Broken PIPE is treated as critical error here
-     */
+	/* Broken PIPE is treated as critical error here */
 	if (TEMP_FAILURE_RETRY(sendto(fd, (char *)&time, sizeof(int16_t), 0, &addr, sizeof(addr))) < 0)
 		ERR("sendto:");
 	alarm(TIMEOUT);

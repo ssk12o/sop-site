@@ -82,7 +82,6 @@ void *pi_estimation(void *voidPtr)
 	double *result;
 	if (NULL == (result = malloc(sizeof(double))))
 		ERR("malloc");
-	;
 
 	int insideCount = 0;
 	for (int i = 0; i < args->samplesCount; i++) {

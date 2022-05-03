@@ -6,6 +6,7 @@
  * instruction the handler might find that mem.a is 0 and mem.b is 1
  * (or vice versa).
  */
+
 #include <signal.h>
 #include <stdio.h>
 #include <unistd.h>

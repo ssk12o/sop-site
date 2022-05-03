@@ -10,8 +10,8 @@
 #include <sys/types.h>
 #include <sys/un.h>
 #include <unistd.h>
-#define ERR(source) (perror(source), fprintf(stderr, "%s:%d\n", __FILE__, __LINE__), exit(EXIT_FAILURE))
 
+#define ERR(source) (perror(source), fprintf(stderr, "%s:%d\n", __FILE__, __LINE__), exit(EXIT_FAILURE))
 #define HERR(source) (fprintf(stderr, "%s(%d) at %s:%d\n", source, h_errno, __FILE__, __LINE__), exit(EXIT_FAILURE))
 
 #define CHUNKSIZE 500
@@ -32,6 +32,7 @@ void sethandler(void (*f)(int), int sigNo)
 	if (-1 == sigaction(sigNo, &act, NULL))
 		ERR("sigaction");
 }
+
 ssize_t bulk_read(int fd, char *buf, size_t count)
 {
 	int c;
@@ -49,6 +50,7 @@ ssize_t bulk_read(int fd, char *buf, size_t count)
 	} while (count > 0);
 	return len;
 }
+
 ssize_t bulk_write(int fd, char *buf, size_t count)
 {
 	int c;
@@ -63,6 +65,7 @@ ssize_t bulk_write(int fd, char *buf, size_t count)
 	} while (count > 0);
 	return len;
 }
+
 int make_socket(void)
 {
 	int sock;

@@ -2,10 +2,12 @@
  * are obtained by two identical open() calls, are related to two
  * file sessions - with separate "current position in the file" counters.
  */
+
 #include <fcntl.h>
 #include <stdio.h>
 #include <time.h>
 #include <unistd.h>
+
 int main(void)
 {
 	char c;

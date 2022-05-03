@@ -151,11 +151,11 @@ int main(int argc, char **argv)
 	sethandler(mq_handler, SIGRTMIN);
 	create_children(n, pin, pout);
 
-	static struct sigevent not ;
-	not .sigev_notify = SIGEV_SIGNAL;
-	not .sigev_signo = SIGRTMIN;
-	not .sigev_value.sival_ptr = &pin;
-	if (mq_notify(pin, &not ) < 0)
+	static struct sigevent noti;
+	noti.sigev_notify = SIGEV_SIGNAL;
+	noti.sigev_signo = SIGRTMIN;
+	noti.sigev_value.sival_ptr = &pin;
+	if (mq_notify(pin, &noti) < 0)
 		ERR("mq_notify");
 
 	parent_work(pout);

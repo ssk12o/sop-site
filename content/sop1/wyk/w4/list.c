@@ -6,6 +6,7 @@
  *   related to system limits on directory and file sizes
  * - display content of the whole subdirectory recursively
  */
+
 #include <dirent.h>
 #include <errno.h>
 #include <stdio.h>
@@ -14,8 +15,10 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
+
 #define DIRNAME_LEN 512
 #define FNAME_LEN 1024
+
 void usage()
 {
 	fprintf(stderr, "\nUsage:\n\nl [-il] [dir1 ...]\noptions:\n");

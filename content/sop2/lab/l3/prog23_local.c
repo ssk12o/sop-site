@@ -10,6 +10,7 @@
 #include <sys/types.h>
 #include <sys/un.h>
 #include <unistd.h>
+
 #define ERR(source) (perror(source), fprintf(stderr, "%s:%d\n", __FILE__, __LINE__), exit(EXIT_FAILURE))
 
 int sethandler(void (*f)(int), int sigNo)
@@ -124,9 +125,7 @@ int main(int argc, char **argv)
 		ERR("Seting SIGPIPE:");
 	fd = connect_socket(argv[1]);
 	prepare_request(argv, data);
-	/*
-     * 	 * Broken PIPE is treated as critical error here
-     * 	 	 */
+	/* Broken PIPE is treated as critical error here */
 	if (bulk_write(fd, (char *)data, sizeof(int32_t[5])) < 0)
 		ERR("write:");
 	if (bulk_read(fd, (char *)data, sizeof(int32_t[5])) < (int)sizeof(int32_t[5]))

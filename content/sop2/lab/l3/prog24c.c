@@ -12,13 +12,17 @@
 #include <sys/time.h>
 #include <sys/types.h>
 #include <unistd.h>
+
 #define ERR(source) (perror(source), fprintf(stderr, "%s:%d\n", __FILE__, __LINE__), exit(EXIT_FAILURE))
+
 #define MAXBUF 576
 volatile sig_atomic_t last_signal = 0;
+
 void sigalrm_handler(int sig)
 {
 	last_signal = sig;
 }
+
 int sethandler(void (*f)(int), int sigNo)
 {
 	struct sigaction act;
@@ -28,6 +32,7 @@ int sethandler(void (*f)(int), int sigNo)
 		return -1;
 	return 0;
 }
+
 int make_socket(void)
 {
 	int sock;
@@ -36,6 +41,7 @@ int make_socket(void)
 		ERR("socket");
 	return sock;
 }
+
 struct sockaddr_in make_address(char *address, char *port)
 {
 	int ret;
@@ -51,6 +57,7 @@ struct sockaddr_in make_address(char *address, char *port)
 	freeaddrinfo(result);
 	return addr;
 }
+
 ssize_t bulk_read(int fd, char *buf, size_t count)
 {
 	int c;
@@ -67,10 +74,12 @@ ssize_t bulk_read(int fd, char *buf, size_t count)
 	} while (count > 0);
 	return len;
 }
+
 void usage(char *name)
 {
 	fprintf(stderr, "USAGE: %s domain port file \n", name);
 }
+
 void sendAndConfirm(int fd, struct sockaddr_in addr, char *buf1, char *buf2, ssize_t size)
 {
 	struct itimerval ts;
@@ -87,6 +96,7 @@ void sendAndConfirm(int fd, struct sockaddr_in addr, char *buf1, char *buf2, ssi
 			break;
 	}
 }
+
 void doClient(int fd, struct sockaddr_in addr, int file)
 {
 	char buf[MAXBUF];
@@ -115,6 +125,7 @@ void doClient(int fd, struct sockaddr_in addr, int file)
 			break;
 	} while (size == MAXBUF - offset);
 }
+
 int main(int argc, char **argv)
 {
 	int fd, file;

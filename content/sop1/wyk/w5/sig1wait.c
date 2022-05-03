@@ -1,6 +1,7 @@
 /* sig1wait.c - a simple illustration of sigwait() use for "synchroneous
  * receiving of asynchroneous signals".
  */
+
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>

@@ -12,15 +12,19 @@
 #include <sys/types.h>
 #include <sys/un.h>
 #include <unistd.h>
+
 #define ERR(source) (perror(source), fprintf(stderr, "%s:%d\n", __FILE__, __LINE__), exit(EXIT_FAILURE))
+
 #define BACKLOG 3
 #define MAXBUF 576
 #define MAXADDR 5
+
 struct connections {
 	int free;
 	int32_t chunkNo;
 	struct sockaddr_in addr;
 };
+
 int sethandler(void (*f)(int), int sigNo)
 {
 	struct sigaction act;
@@ -30,6 +34,7 @@ int sethandler(void (*f)(int), int sigNo)
 		return -1;
 	return 0;
 }
+
 int make_socket(int domain, int type)
 {
 	int sock;
@@ -38,6 +43,7 @@ int make_socket(int domain, int type)
 		ERR("socket");
 	return sock;
 }
+
 int bind_inet_socket(uint16_t port, int type)
 {
 	struct sockaddr_in addr;
@@ -56,6 +62,7 @@ int bind_inet_socket(uint16_t port, int type)
 			ERR("listen");
 	return socketfd;
 }
+
 ssize_t bulk_write(int fd, char *buf, size_t count)
 {
 	int c;
@@ -70,6 +77,7 @@ ssize_t bulk_write(int fd, char *buf, size_t count)
 	} while (count > 0);
 	return len;
 }
+
 int findIndex(struct sockaddr_in addr, struct connections con[MAXADDR])
 {
 	int i, empty = -1, pos = -1;
@@ -89,13 +97,13 @@ int findIndex(struct sockaddr_in addr, struct connections con[MAXADDR])
 	}
 	return pos;
 }
+
 void doServer(int fd)
 {
 	struct sockaddr_in addr;
 	struct connections con[MAXADDR];
 	char buf[MAXBUF];
 	socklen_t size = sizeof(addr);
-	;
 	int i;
 	int32_t chunkNo, last;
 	for (i = 0; i < MAXADDR; i++)
@@ -125,10 +133,12 @@ void doServer(int fd)
 		}
 	}
 }
+
 void usage(char *name)
 {
 	fprintf(stderr, "USAGE: %s port\n", name);
 }
+
 int main(int argc, char **argv)
 {
 	int fd;

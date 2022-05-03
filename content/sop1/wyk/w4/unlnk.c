@@ -2,16 +2,19 @@
  * its directory link was removed (and the contents of the file cannot
  * be accessed by other processes).
  */
+
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <unistd.h>
+
 void p(char *s)
 {
 	fprintf(stderr, "\n%s: press a key", s);
 	getchar();
 }
+
 int main(int argc, char *argv[])
 {
 	char buf[20];

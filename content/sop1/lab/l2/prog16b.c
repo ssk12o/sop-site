@@ -26,7 +26,6 @@ void sethandler(void (*f)(int), int sigNo)
 void sig_handler(int sig)
 {
 	sig_count++;
-	;
 }
 
 void child_work(int m)
@@ -91,7 +90,6 @@ void parent_work(int b, int s, char *name)
 		if (TEMP_FAILURE_RETRY(
 			    fprintf(stderr, "Block of %ld bytes transfered. Signals RX:%d\n", count, sig_count)) < 0)
 			ERR("fprintf");
-		;
 	}
 	if (TEMP_FAILURE_RETRY(close(in)))
 		ERR("close");
