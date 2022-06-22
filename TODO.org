@@ -12,4 +12,4 @@
  - [X] Być może warto rozważyć zmigrowanie pytań do elementu <details>. Wtedy pokazywanie odpowiedzi będzie zgrabniejsze.
  - [ ] Napisać w L0 o makefile (przynajmniej wspomnieć, że będzie wymagany)
  - [ ] Oprócz regulaminu zrobić sekcję z często zadawanymi pytaniami organizacyjnymi
- - [ ] 
+ - [ ] Dodać flagi kompilacji (sanitizery) do tutoriali SOP2
