@@ -50,31 +50,27 @@ Important note: use of -Wall compiler flag is compulsory. Besides that each assi
 
 *compressing (with check):*
 
-    $ tar -cjf nowakj.tar.bz2 prog1.c
-    $ tar -tjf nowakj.tar.bz2
-
-Substitute nowakj with your MiNI account name.
+    $ tar -cjf $USER.tar.bz2 prog1.c
+    $ tar -tjf $USER.tar.bz2
 
 <div class="dlaN">
 
   - You can type multiple files and folders instead of one file.
 
-  - **ATTENTION** you can not freely reorder the switches of the tar command, the f switch has an argument (the archive).
+  - **ATTENTION** you can not freely reorder the switches of the tar command, the `-f` switch has an argument (the archive).
 
   - **ATTENTION** you can not freely reorder the tar arguments, eg.:
     
-    ~~`$ tar -cjf prog1.c nowakj.tar.bz2`~~
+    ~~`$ tar -cjf prog1.c $USER.tar.bz2`~~
     
-    will erase your source file \!\!\!
+    will erase your source file\!\!\! Remember that the archive name should be right next to the `-f` switch.
 
 </div>
 
 *work upload (with check):*
 
-    $ cp nowakj.tar.bz2 {{< teacherdir >}}
-    $ ls -l {{< teacherdir >}}nowakj.tar.bz2
-
-Substitute nowakj with your MiNI account name.
+    $ cp $USER.tar.bz2 {{< teacherdir >}}
+    $ ls -l {{< teacherdir >}}$USER.tar.bz2
 
 <div class="dlaN">
 

@@ -50,31 +50,27 @@ Uwaga: użycie flagi -Wall jest obowiązkowe w trakcie laboratorium, program nie
 
 *spakowanie i sprawdzenie:*
 
-    $ tar -cjf nowakj.tar.bz2 prog1.c
-    $ tar -tjf nowakj.tar.bz2
-
-Zamiast nowakj należy wstawić swój login wydziałowy.
+    $ tar -cjf $USER.tar.bz2 prog1.c
+    $ tar -tjf $USER.tar.bz2
 
 <div class="dlaN">
 
   - Można podać wiele plików lub katalogów do spakowania.
 
-  - **UWAGA** nie wolno dowolnie mieszać parametrów polecenia tar, parametr -f ma argument - archiwum.
+  - **UWAGA** nie wolno dowolnie mieszać parametrów polecenia tar, parametr `-f` ma argument - archiwum.
 
   - **UWAGA** nie wolno dowolnie mieszać argumentów polecenia tar, np podanie:
     
-    ~~`$ tar -cjf prog1.c nowakj.tar.bz2`~~
+    ~~`$ tar -cjf prog1.c $USER.tar.bz2`~~
     
-    spowoduje skasowanie pliku z kodem źródłowym \!\!\!
+    spowoduje skasowanie pliku z kodem źródłowym\!\!\! Nazwa archiwum zawsze powinna być bezpośrednio za parametrem `-f`.
 
 </div>
 
 *wgranie pracy ze sprawdzeniem:*
 
-    $ cp nowakj.tar.bz2 {{< teacherdir >}}
-    $ ls -l {{< teacherdir >}}nowakj.tar.bz2
-
-Zamiast nowakj należy wstawić swój login wydziałowy.
+    $ cp $USER.tar.bz2 {{< teacherdir >}}
+    $ ls -l {{< teacherdir >}}$USER.tar.bz2
 
 <div class="dlaN">
 
