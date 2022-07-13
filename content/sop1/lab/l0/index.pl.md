@@ -78,3 +78,28 @@ Katalog do którego wgrywacie prace może być inny niż ten przykładowy, będz
 
 </div>
 
+---
+
+### Przygotowanie środowiska
+
+W przeciwieństwie do poprzednich przedmiotów nie wymagamy żadnego konkretnego środowiska. Niemniej jednak odpowiedni edytor powinien potrafić:
+
+- wyświetlać błędy kompilacji na żywo wraz z kodem (co powoduje, że dowiadujemy się o nich znacznie szybciej, jak również pozwala nam znacznie łatwiej znaleźć odpowiedni fragment kodu),
+- podpowiadać nazwy funkcji (przydatne przy wpisywaniu dłuższych nazw).
+
+Przykładowym edytorem, który dobrze się sprawdzi, jest Visual Studio Code (nie mylić z Visual Studio), który jest częstym wyborem ze względu na niski próg wejścia. Innymi częstymi wyborami są Emacs oraz Vim (oraz niedostępny domyślnie w laboratorium Neovim), które jednak cechują się wyższym progiem wejścia. Wszystkie wymienione edytory wymagają dodatkowej konfiguracji, którą warto przeprowadzić przed pierwszym punktowanym laboratorium. Oczywiście warto, żeby konfiguracja edytora w domu była podobna do tej laboratorium.
+
+Nie zalecamy korzystania z większych środowisk, takich jak na przykład ~~CLion~~, osobom które dobrze ich nie znają; w przeciwnym wypadku dodatkowe ich funkcje mogą bardziej przeszkadzać niż pomagać. Ponadto nie wolno używać środowisk opartych na przeglądarce, takich jak na przykład ~~<https://www.onlinegdb.com>~~; wynika to z tego, że przechowują one kod wyłącznie w przeglądrce, co w przypadku problemów ze stabilnością komputera może skutkować utratą kodu i koniecznością zaczęcia od nowa.
+
+---
+
+### Przed pierwszym punktowanym laboratorium
+
+Należy:
+
+- zapoznać się z [programem]({{< ref "../../syllabus" >}}), [regulaminem]({{< ref "../../zasady" >}}) i [harmonogramem]({{< ref "../../harmonogram" >}}),
+- przygotować edytor wedle własnych upodobań (lub być w stanie to szybko zrobić na początku laboratorium),
+- zapoznać się z [odpowiednim tutorialem]({{< ref "../l1/index.pl.html" >}}),
+- wykonać [przykładowe zadanie]({{< ref "../l1-example.pl.md" >}}),
+- przećwiczyć operacje wykonywane na laboratorium zerowym,
+- zapoznać się ze stronami `man` i materiałem na wejściówkę.
