@@ -1,23 +1,22 @@
 ---
-title: "Harmonogram"
+atitle: "Harmonogram"
 date: 2022-02-10T10:00:00+01:00
 draft: false
 menu: sop1
 ---
 
-## Wykłady: czwartki, g. 8:00 - 9:30, ONLINE
+## Wykłady: Czwartki, godz. 8:15 - 10:00, s. 328
 
 
-| Data  | Tytuł                                                                                    |
-| ----- | --------                                                                                 |
-| 07.10 | [W1  Wstęp. Systemy komputerowe i operacyjne.]({{< ref "wyk/w1" >}})                     |
-| 14.10 | [W2 Procesy]({{< ref "wyk/w2" >}})                                                       |
-| 21.10 | [W3 System plików i jego interfejs. Strumieniowe wejście/wyjście.]({{< ref "wyk/w3" >}}) |
-| 28.10 | [W5 Sygnały POSIX]({{< ref "wyk/w5" >}})                                                 |
-| 18.11 | [W4 Niskopoziomowe operacje wejścia/wyjścia]({{< ref "wyk/w4" >}})                       |
-| 25.11 | [W6 Wątki. P-wątki i muteksy.]({{< ref "wyk/w6" >}})                                     |
-| 02.12 | [W7 Zarządzanie procesami i wątkami]({{< ref "wyk/w7" >}})                               |
-| 09.12 | [W8 Asynchroniczne operacje wejścia/wyjścia]({{< ref "wyk/w8" >}})                       |
+| Data  | Tytuł                                                        |
+| ----- | ------------------------------------------------------------ |
+| 13.10 | [Wstęp. Systemy komputerowe i operacyjne.]({{< ref "wyk/w1" >}}) |
+| 27.10 | [Procesy]({{< ref "wyk/w2" >}})                              |
+| 10.11 | [System plików i jego interfejs. Strumieniowe wejście/wyjście.]({{< ref "wyk/w3" >}}) |
+| 24.11 | [Sygnały POSIX]({{< ref "wyk/w5" >}})                        |
+| 08.12 | [Niskopoziomowe operacje wejścia/wyjścia]({{< ref "wyk/w4" >}}) |
+| 22.12 | [Wątki. P-wątki i muteksy.]({{< ref "wyk/w6" >}})            |
+| 19.01 | [Asynchroniczne operacje wejścia/wyjścia]({{< ref "wyk/w8" >}}) |
 
 ## Zajęcia laboratoryjne: wtorki, godz. 14:**45** - 17:00, sale 218, 219, 304
 
