@@ -36,4 +36,4 @@ menu: sop1
 | In the exam session | L5 Retakes                                                     | Everyone           |
 
 
-
+*The retakes date will be provided after the exam session schedule is published.*
