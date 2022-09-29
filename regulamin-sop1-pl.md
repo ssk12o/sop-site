@@ -76,6 +76,7 @@ Metody weryfikacji efektów na laboratorium:
 # Zasady zaliczenia przedmiotu i wystawiania oceny końcowej
 
  - Do zaliczenia przedmiotu koniecznie jest uzyskanie w sumie przynajmniej 50 punktów (na 100 możliwych), z zastrzeżeniem dopuszczalnej liczby nieobecności.
+ - Ocena z poprawy zastępuje ocenę z poprawianych zajęć.
  - **Ocena końcowa z przedmiotu** wynika z sumy punktów uzyskanych przez studenta z laboratorium:
 
 | Suma punktów | Ocena |
