@@ -6,17 +6,17 @@ The first goal of the *Operating Systems I* course is to familiarize students wi
 
 The subject consists of a lecture and a laboratory.
 
-- The lectures introduce students to the course matter, in particular to the topic covered by the laboratory.
+- The lectures introduce students to the course matter, in particular, to the topic covered by the laboratory.
    - The course consists of 15 lecture hours in 2-hour blocks. The last lecture is 1 hour long. Lectures take place according to the schedule provided on the course website.
    - The lecture materials are available on the course website.
    - There are no lecture tests. The lecture content will, however, appear in the introductory tests during the laboratory.
 
 - The laboratory consists of five classes denoted as Lab0, Lab1, Lab2, Lab3, Lab4. The laboratory classes take place according to the schedule provided on the course website. The course website also includes preparation materials for classes.
 
-	- L0 class is devoted to the preparation of the environment. During this class, students have to recall the skills of the Unix Fundamentals course class and to configure the development environment. Any deficiencies in the configuration or skills (e.g., lack of intellisense, underlining errors in the editor or poor ability to navigate through directories) in all subsequent classes will not be an excuse for poor grades and cannot be used as an excuse for less strict grading.
+	- L0 class is devoted to the preparation of the environment. During this class, students have to recall the skills of the Unix Fundamentals course and to configure the development environment. Any deficiencies in the configuration or skills (e.g., lack of intellisense, underlining errors in the editor or poor ability to navigate through directories) in all subsequent classes will not be an excuse for poor grades and cannot be used as an excuse for less strict grading.
     - Lab1, Lab2, Lab3 and Lab4 classes assess abilities in the topics given in the laboratory schedule. You should prepare on your own for each class, using the materials on the course website and lecture materials. Each of the classes consists of three parts:
 
-	    - questions and answers (approx. 30 minutes): during this part, the teacher answers students' questions and explains any 
+	    - questions and answers (approx. 30 minutes): during this part, the teacher answers students' questions.
 		- entry (8 minutes): solving the moodle test
         - programming task (90 minutes)
 		
@@ -35,8 +35,8 @@ The subject consists of a lecture and a laboratory.
 
 # Class attendance
 
-- Attendance of the lectures is not obligatory but recommended due to the close connection between the discussed material and the laboratory.
-- Attendance at laboratory classes is obligatory. In case of absence, the student receives 0 points for activities carried during the classes in which he was absent.
+- Attendance at the lectures is not obligatory but recommended due to the close connection between the discussed material and the laboratory.
+- Attendance at the laboratory classes is obligatory. In case of absence, the student receives 0 points for activities carried during the classes in which he was absent.
 - Absence from two of the assessed laboratory classes Lab1/Lab2/Lab3/Lab4 results in failure to complete the course.
 
 # Verification of achievement of learning outcomes
@@ -58,9 +58,9 @@ Methods used for effects verification during the laboratory:
      - Allotted time:  90 minutes
      - A programming task is divided into stages. Amount of points for each stage in provided within the task description. The stages must be performed in the prescribed order. It is not allowed to proceed to the next stage without completing the predecessors.
      - Each stage is checked and graded during the class. Use of proper tools and POSIX API, correct implementation and functional correctness are graded. Code style is not (except Lab3).
-     - At the end of the class, the code version containing all the steps to be assessed must be copied to the network share (more information at the end of the page). Lack of implementation of any of the functionalities in the code sent means that the points for a given stage are reset.
-	 - The uploaded solution of **Lab3** will be additionally graded in terms of code quality and aesthetics. This will be checked after the lab. For the problems you will receive up to 10 (but no more than number of points from the lab) penalty points that will be subtracted from the base result from Lab3.
-	 - The solution of the Lab3 task will also be assessed in terms of code aesthetics. The assessment will be made after the class. Penalty points are awarded for problems in the code, which are subtracted from the points obtained during the classes. You can lose up to 10 points, but not more than the number of points obtained during the classes.
+     - At the end of the class, the code version containing all the steps to be assessed must be copied to the network share (more information at the end of the page). Lack of implementation of any of the functionalities in the code sent means that the points for a given stage are reset to 0.
+	 - The uploaded solution of **Lab3** will be additionally graded in terms of code quality and aesthetics. This will be checked after the lab. For the problems you will receive up to 10 (but no more than number of points from the lab) penalty points that will be subtracted from the base result of Lab3.
+	 - Powtórka?? The solution of the Lab3 task will also be assessed in terms of code aesthetics. The assessment will be made after the class. Penalty points are awarded for problems in the code, which are subtracted from the points obtained during the classes. You can lose up to 10 points, but not more than the number of points obtained during the classes.
      - Laboratory tasks are solved using the Arch Linux system on the computers in the laboratory. It is not allowed to show solutions on your own computer.
 	 
 - ## Lab task solution formalities
@@ -79,8 +79,8 @@ Methods used for effects verification during the laboratory:
 
 # The rules for passing the course and for calculating the final grade
 
- - To pass the course, it is necessary to obtain a total of at least 50 points (out of 100 possible), and to attend the number of classes required in Attendance section.
- - The points from retake always replace the result scored during the lab
+ - To pass the course, it is necessary to obtain a total of at least 50 points (out of 100 possible), and to attend the number of classes required in the Attendance section.
+ - The points from the retake always replace the result scored during the lab
  - **The final course grade** is based on total points acquired by student during the labs (100p tops):
 
 | Points in total | Grade |
@@ -99,7 +99,7 @@ Methods used for effects verification during the laboratory:
 
   - The number of points obtained for the subsequent stages of the laboratory task is given at the time of checking by the teacher and written on a sheet with the content of the task
   - The number of points obtained for entry is displayed in moodle after the test is completed
-  - Points from both parts of the laboratory are placed in the nose no later than 24 hours after the class. The number of points inscribed in the usos determines the final grade
+  - Points from both parts of the laboratory are placed in usos no later than 24 hours after the class. The number of points in usos determines the final grade
   
 - Final evaluation
 
