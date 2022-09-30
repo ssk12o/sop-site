@@ -35,7 +35,7 @@ The subject consists of a lecture and a laboratory.
 
 # Class attendance
 
-- Attendance at the lectures is not obligatory but recommended due to the close connection between the discussed material and the laboratory.
+- Attendance at the lectures is not obligatory but recommended due to the close relation between the discussed material and the laboratory.
 - Attendance at the laboratory classes is obligatory. In case of absence, the student receives 0 points for activities carried during the classes in which he was absent.
 - Absence from two of the assessed laboratory classes Lab1/Lab2/Lab3/Lab4 results in failure to complete the course.
 
@@ -51,7 +51,6 @@ Methods used for effects verification during the laboratory:
   - The entrance test consists of 4 questions, for each question you can get a score from the range [0, 2] points. In total, for the entire test, a maximum is 8 points.
   - The entry test is scored as follows. In each multiple-choice question there are *n* correct answers and *m* incorrect answers (each answer is either correct or incorrect). There is 2/n points for each correct answer chosen, and for each incorrect answer chosen there are -2/m points. For each question, the sum of points resulting from the marked incorrect and correct answers is awarded, as long as the sum obtained is not negative. In this case, 0 points are awarded.
   - Time limit for the test is 8 minutes.
-
 - Programming task
 
      - 0 to 17 points to get for each topic
@@ -59,12 +58,9 @@ Methods used for effects verification during the laboratory:
      - A programming task is divided into stages. Amount of points for each stage in provided within the task description. The stages must be performed in the prescribed order. It is not allowed to proceed to the next stage without completing the predecessors.
      - Each stage is checked and graded during the class. Use of proper tools and POSIX API, correct implementation and functional correctness are graded. Code style is not (except Lab3).
      - At the end of the class, the code version containing all the steps to be assessed must be copied to the network share (more information at the end of the page). Lack of implementation of any of the functionalities in the code sent means that the points for a given stage are reset to 0.
-	 - The uploaded solution of **Lab3** will be additionally graded in terms of code quality and aesthetics. This will be checked after the lab. For the problems you will receive up to 10 (but no more than number of points from the lab) penalty points that will be subtracted from the base result of Lab3.
-	 - Powtórka?? The solution of the Lab3 task will also be assessed in terms of code aesthetics. The assessment will be made after the class. Penalty points are awarded for problems in the code, which are subtracted from the points obtained during the classes. You can lose up to 10 points, but not more than the number of points obtained during the classes.
-     - Laboratory tasks are solved using the Arch Linux system on the computers in the laboratory. It is not allowed to show solutions on your own computer.
-	
-- ## Lab task solution formalities
-
+	- The uploaded solution of **Lab3** will be additionally graded in terms of code quality and aesthetics. This will be checked after the lab. For the problems you will receive up to 10 (but no more than number of points from the lab) penalty points that will be subtracted from the base result of Lab3.
+	- Laboratory tasks are solved using the Arch Linux system on the computers in the laboratory. It is not allowed to show solutions on your own computer.
+- Lab task solution formalities
   - The task must be coded in *C* (not C++)
   - The solution of must be submitted as a archive in `.tar.gz`, `.tar.xz` or `.tar.bz2` format. After typical extraction (flags `-xzf`, `-xJf` or `-xjf`) the archive must be unpacked to the directory named `$USER` where `$USER` is your login.
   - The archive must contain source files (`.c`, `.h`) and a `Makefile`
@@ -82,15 +78,13 @@ Methods used for effects verification during the laboratory:
  - To pass the course, it is necessary to obtain a total of at least 50 points (out of 100 possible), and to attend the number of classes required in the Attendance section.
  - The points from the retake always replace the result scored during the lab
  - **The final course grade** is based on total points acquired by student during the labs (100p tops):
+   - Grade 5.0 - total in range [90, 100]
+   - Grade 4.5 - total in range [80, 90)
+   - Grade 4.0 - total in range [70, 80)
+   - Grade 3.5 - total in range [60, 70)
+   - Grade 3.0 - total in range [50, 60)
+   - Grade 2.0 - total in range [0, 50)
 
-| Points in total | Grade |
-| --------------- | ----- |
-| s ≥ 90          | 5     |
-| 80 ≤ s \< 90    | 4.5   |
-| 70 ≤ s \< 80    | 4     |
-| 60 ≤ s \< 70    | 3.5   |
-| 50 ≤ s \< 60    | 3     |
-| s \< 50         | 2     |
 
 
 # Deadline and procedure for announcing grades

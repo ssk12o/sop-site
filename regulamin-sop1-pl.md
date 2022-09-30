@@ -82,15 +82,12 @@ Metody weryfikacji efektów na laboratorium:
  - Do zaliczenia przedmiotu koniecznie jest uzyskanie w sumie przynajmniej 50 punktów (na 100 możliwych), z zastrzeżeniem dopuszczalnej liczby nieobecności.
  - Ocena z poprawy zastępuje ocenę z poprawianych zajęć.
  - **Ocena końcowa z przedmiotu** wynika z sumy punktów uzyskanych przez studenta z laboratorium:
-
-| Suma punktów | Ocena |
-| ------------ | ----- |
-| s ≥ 90       | 5     |
-| 80 ≤ s \< 90 | 4.5   |
-| 70 ≤ s \< 80 | 4     |
-| 60 ≤ s \< 70 | 3.5   |
-| 50 ≤ s \< 60 | 3     |
-| s \< 50      | 2     |
+   - Ocena 5.0 - wynik w przedziale [90, 100]
+   - Ocena 4.5 - wynik w przedziale [80, 90)
+   - Ocena 4.0 - wynik w przedziale [70, 80)
+   - Ocena 3.5 - wynik w przedziale [60, 70)
+   - Ocena 3.0 - wynik w przedziale [50, 60)
+   - Ocena 2.0 - wynik w przedziale [0, 50)
 
 
 # Termin i tryb ogłaszania ocen
