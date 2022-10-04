@@ -30,6 +30,8 @@ markup:
       unsafe: true
     extensions:
       linkify: false
+  highlight:
+    noclasses: false
 
 minify:
   minifyOutput: true
