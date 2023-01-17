@@ -127,6 +127,13 @@ opartych na przeglądarce, takich jak na przykład ~~<https://www.onlinegdb.com>
 kod wyłącznie w przeglądrce, co w przypadku problemów ze stabilnością komputera może skutkować utratą kodu i
 koniecznością zaczęcia od nowa.
 
+{{< hint info >}}
+Jeżeli Państwo będą korzystać z Visual Studio Code, to może pojawić się problem, w którym edytor podświetla część nazw
+jako nieznanych mimo tego, że program się kompiluje (zwykle są to nazwy związane z sygnałami, na przykład `sigset_t`
+oraz `SIG_BLOCK`). Rozwiązaniem tego jest znalezienie w `C/C++: Edit Configurations (UI)` ustawienia `C standard` i zmiana go
+z opcji zaczynającej się od `c` na odpowiadającą opcję zaczynającą się od `gnu`, na przykład `gnu17` zamiast `c17`.
+{{< /hint >}}
+
 ### Przed pierwszym punktowanym laboratorium
 
 Należy:

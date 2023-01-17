@@ -107,6 +107,13 @@ A good choice would be Visual Studio Code (not to be confused with Visual Studio
 
 We suggest you shouldn't use larger IDEs, such as ~~CLion~~ if you do not know them well; otherwise their functionalities will hurt you more than help. Also do not use in-browser editors such as ~~<https://www.onlinegdb.com>~~; otherwise in case of PC instability you might lose your code (as it is only stored in browser) and need to begin from scratch.
 
+{{< hint info >}}
+If you want to use Visual Studio Code, you may encounter an issue in which the editor highlights some identifiers as unknown,
+even though the program actually builds correctly (usually these are names related to signals, such as `sigset_t` and `SIG_BLOCK`).
+In order to fix this, find in `C/C++: Edit Configurations (UI)` the `C standard` and change it from an option starting with `c`
+to a corresponding option starting with `gnu`, for instance `gnu17` instead of `c17`.
+{{< /hint >}}
+
 ### Before first graded labs
 
 You should:
