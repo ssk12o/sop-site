@@ -19,7 +19,7 @@ Wtorki, godz. 16:15 - 18:00, s. 328
 
 ## Zajęcia laboratoryjne
 
-Wtorki, godz. 14:15 - 17:00
+Wtorki, godz. 14:15 - 16:30
 
 | Data                      | Tytuł                                                          |
 | ------------------------- | ---------                                                      |
@@ -28,7 +28,7 @@ Wtorki, godz. 14:15 - 17:00
 | 21.11.2023                | [L2 Procesy i sygnały]({{< ref "lab/l2" >}})                   |
 |  5.12.2023                | [L3 Wątki i muteksy]({{< ref "lab/l3" >}})                     |
 | 19.12.2023                | [L4 Synchronizacja]({{< ref "lab/l4" >}})                      |
-| 22.12.2023                | **19:00** -- zamknięcie zapisów na poprawy w moodle            |
+| 22.12.2023                | **19:00** -- zamknięcie zapisów na poprawy w LeON              |
 |  9.01.2024                | L5 Poprawy                                                     |
 
 

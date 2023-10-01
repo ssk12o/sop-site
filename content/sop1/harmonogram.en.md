@@ -19,7 +19,7 @@ Thurdsays, 8:15 - 10:00, room 328
 
 ## Laboratories
 
-Mondays, 2:15-5pm, rooms 203, 218.
+Mondays, 2:15-4:30pm
 
 | Date                | Topic                                                          |
 | ----------          | -----------------------------------                            |
@@ -28,6 +28,6 @@ Mondays, 2:15-5pm, rooms 203, 218.
 | 14.11.2023          | [L2 Processes and signals]({{< ref "lab/l2" >}})               |
 | 28.11.2023          | [L3 Threads and mutexes]({{< ref "lab/l3" >}})                 |
 | 12.12.2023          | [L4 Synchronization]({{< ref "lab/l4" >}})                     |
-| 15.12.2023          | **7:00pm** retake signup closes (in moodle)                    |
+| 15.12.2023          | **7:00pm** retake signup closes (in LeON)                      |
 |  9.01.2024          | L5 Retakes                                                     |
 
