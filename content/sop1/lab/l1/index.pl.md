@@ -8,7 +8,6 @@ weight: 20
 
 {{< hint info >}}
 Uwagi wstępne:
-- To jest mega łatwy tutorial, ale za to długi, kolejne będą coraz trudniejsze i krótsze
 - Szybkie przejrzenie tutoriala prawdopodobnie nic nie pomoże, należy samodzielnie uruchomić programy, sprawdzić jak
   działają, poczytać materiały dodatkowe takie jak strony man. W trakcie czytania sugeruję wykonywać ćwiczenia a na
   koniec przykładowe zadanie.
@@ -27,7 +26,7 @@ Uwagi wstępne:
 {{< /hint >}}
 
 
-## Zadanie 9 - katalogi 1
+## Zadanie 1 - katalogi 1
 
 Cel: Napisać program zliczający (pliki, linki, katalogi i inne obiekty) w katalogu roboczym (bez podkatalogów)
 
@@ -37,43 +36,11 @@ Co student musi wiedzieć:
 - man 3p readdir
 - man 0p dirent.h
 - man 3p fstatat (tylko opis stat i lstat)
-- man 3p errno
-- man 2 lstat (opis makr testujących typ obiektu)
+- man sys_stat.h
+- man 7 inode (pierwsza połowa sekcji "The file type and mode")
 
-<em>funkcja do pliku <b>prog9.c</b></em>
-```c
-void scan_dir()
-{
-DIR *dirp;
-struct dirent *dp;
-struct stat filestat;
-int dirs = 0, files = 0, links = 0, other = 0;
-if (NULL == (dirp = opendir(".")))
-ERR("opendir");
-do {
-errno = 0;
-if ((dp = readdir(dirp)) != NULL) {
-if (lstat(dp->d_name, &filestat))
-ERR("lstat");
-if (S_ISDIR(filestat.st_mode))
-dirs++;
-else if (S_ISREG(filestat.st_mode))
-files++;
-else if (S_ISLNK(filestat.st_mode))
-links++;
-else
-other++;
-}
-} while (dp != NULL);
-
-	if (errno != 0)
-		ERR("readdir");
-	if (closedir(dirp))
-		ERR("closedir");
-	printf("Files: %d, Dirs: %d, Links: %d, Other: %d\n", files, dirs, links, other);
-
-}
-```
+<em>kod do pliku <b>prog9.c</b></em>
+{{< includecode "prog10.c" >}}
 
 Uruchom ten program w katalogu w którym masz jakieś pliki, może być ten w którym wykonujesz ten tutorial, ważne aby nie było w nim katalogów, czy wyniki zgadzają się z tym czego oczekujemy tj. zero katalogów, trochę plików?
 {{< expand "Odpowiedź" >}} 
@@ -133,7 +100,7 @@ Dobrzy programiści zawsze zwalniają zasoby, w tym programie zasobem jest otwar
 liczy się jak otwarty plik, proces może mieć limit otwartych deskryptorów co daje nam już dwa bardzo ważne argumenty aby
 pamiętać o closedir. Trzecim powodem będzie sprawdzający kod nauczyciel :-).
 
-## Zadanie 10 - katalogi 2
+## Zadanie 2 - katalogi 2
 
 Cel: Bazując na funkcji z poprzedniego zadania napisać program, który będzie zliczał obiekty we wszystkich folderach
 podanych jako parametry pozycyjne programu
@@ -170,7 +137,7 @@ W tym programie nie wszystkie błędy muszą zakończyć się wyjściem, który 
 Nigdy i pod żadnym pozorem nie pisz `printf(argv[i])`, jeśli ktoś poda jako katalog %d to jak to wyświetli `printf`?
 To dotyczy nie tylko argumentów programu ale dowolnych ciągów znaków.
 
-## Zadanie 11 - katalogi 3
+## Zadanie 3 - katalogi 3
 
 Cel: Napisać program zliczający wystąpienia plików, katalogów, linków i innych typów dla całych poddrzew zaczynających
 się w podanych jako parametry folderach.
@@ -207,7 +174,7 @@ przeskanowanie bardzo głębokiego drzewa katalogów (głębszego niż limit) al
 mamy. W zakresie deskryptorów maksima systemowe pod Linuksem są nieokreślone, ale można procesy oddzielnie limitować na
 poziomie administracji systemem.
 
-## Zadanie 12 - operacje na plikach
+## Zadanie 4 - operacje na plikach
 
 Cel: Napisać program tworzący nowy plik o podanej parametrami nazwie (-n NAME), uprawnieniach (-p OCTAL ) i rozmiarze (
 -s SIZE). Zawartość pliku ma się składać w około 10% z losowych znaków [A-Z], resztę pliku wypełniają zera (znaki o
@@ -294,7 +261,7 @@ zainteresowane procesy będą mogły z niego korzystać. Gdy skończą plik znik
 Najlepiej w procesie wywołać srand dokładnie jeden raz z unikalnym ziarnem,w tym programie wystarczy czas podany w
 sekundach.
 
-## Zadanie 13 – buforowanie standardowego wyjścia
+## Zadanie 5 – buforowanie standardowego wyjścia
 
 Ten temat ma więcej wspólnego z ogólnym programowaniem w C niż z systemami operacyjnymi, niemniej jednak wspominamy o nim, bowiem w poprzednich latach był częstym źródłem problemów.
 
@@ -344,9 +311,48 @@ rezultatów, a do czegokolwiek innego używa się standardowego błędu. Na przy
 wystąpienia na standardowe wyjście, ale ewentualne błędy przy otwarciu pliku trafią na standardowy błąd. Nawet nasze
 makro `ERR` wypisuje błąd do strumienia standardowego błędu.
 
-Wykonaj przykładowe <a href="{{< ref "../l1-example" >}}">ćwiczenie</a> z poprzednich lat. To zadanie szacuję na 60
+## Zadanie 6 - operacje niskopoziomowe na plikach
+
+Napisz prosty program kopiujący pliki.
+Powinien akceptować jako swoje argumenty dwie ścieżki i skopiować plik z pierwszej na drugą.
+
+Tym razem do realizacji odczytu i zapisu plików użyjemy funkcji niskopoziomowych, t.j. takich, których nie definiuje biblioteka standardowa C, a które udostępnia sam system operacyjny. Są one trudniejsze w użyciu, ale są też bardziej uniwersalne. Można przy ich pomocy np. wysyłać pakiety przez sieć, czym zajmiemy się w przyszłym semestrze.
+
+Co student musi wiedzieć: 
+- man 3p open
+- man 3p close
+- man 3p read
+- man 3p write
+- man 3p mknod (tylko stałe opisujące uprawnienia do open)
+- opis makra TEMP_FAILURE_RETRY <a href="http://www.gnu.org/software/libc/manual/html_node/Interrupted-Primitives.html">tutaj</a>
+
+<em>kod do pliku <b>prog14.c</b></em>
+{{< includecode "prog14.c" >}}
+
+Aby dostępne było makro `TEMP_FAILURE_RETRY` trzeba najpierw zdefiniować `GNU_SOURCE` a następnie dołączyć plik
+nagłówkowy `unistd.h`. Nie musisz jeszcze w pełni rozumieć działania tego makra, będzie on ważniejsze w trakcie kolejnego laboratorium gdy zajmiemy się sygnałami.
+
+Dlaczego w powyższym programie używane są funkcje `bulk_read` i `bulk_write`?
+Czy nie wystarczyłoby po prostu użyć `read` i `write`
+{{< expand "Answer" >}}
+Zgodnie ze specyfikacją funkcje `read` i `write` mogą zwrócić zanim ilość danych której zażądał użytkownik zostanie odczytana/zapisana.
+Więcej o tym zachowaniu dowiesz się w tutorialu do kolejnego laboratorium.
+Teoretycznie w tym zadaniu nie ma to znaczenia (ponieważ nie używamy sygnałów), ale dobrze się do tego przyzwyczaić już teraz.
+{{< /expand >}}
+
+Czy powyższy program mógłby być zaimplementowany funkcjami bibliotecznymi z C zamiast niskopoziomowym IO? (`fopen`, `fprintf`, ...)
+{{< expand "Answer" >}}
+Tak, w tym programie nie ma niczego co nie pozwala użyć wcześniej pokazanych funkcji.
+{{< /expand >}}
+
+Czy do deskryptora zwróconego z `open` można zapisać dane przez `fprintf`?
+{{< expand "Answer" >}}
+Nie! Funkcje `fprintf`, `fgets`, `fscanf` itd. przyjmują jako argument zmienną typu `FILE*`, deskryptor jest natomiast pojedynczą liczbą `int` używaną przez system operacyjny do identyfikacji otwartego pliku.
+{{< /expand >}}
+
+Wykonaj przykładowe <a href="{{< ref "../l1-example" >}}">ćwiczenie</a> z poprzednich lat. To zadanie szacuję na 75
 minut, jeśli wyrobisz się w tym czasie to znaczy, że jesteś dobrze przygotowany/a do zajęć. Pamiętaj, że w aktualnym
-układzie zajęć będzie dane zadnie na nieco ponad godzinę, więc trochę bardziej pracochłonne.
+układzie zajęć będzie dane zadnie na dwie godziny, będzie więc bardziej pracochłonne.
 
 ## Kody źródłowe z treści tutoriala
 {{% codeattachments %}}

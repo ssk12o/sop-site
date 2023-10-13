@@ -228,17 +228,11 @@ Jak uruchomić ten program aby zminimalizować szansę na sklejanie się SIGUSER
 Popraw powyższy program tak aby wyeliminować problem wielu wywołań obsługi sygnału w obrębie jednego sigsuspend 
 {{< expand "Odpowiedź" >}} Można to zrobić np. dodając drugą zmienną globalną tylko do obsługi SIGUSR2, zwiększanie zmiennej count też można przenieść do funkcji obsługi sygnału w ten sposób uniknie się potencjalnego problemu z obsługą dwóch SIGUSR2  w obrębie jednego sigsuspend. Trzeba jeszcze przebudować kod związany z wypisywaniem zmienionego licznika count w rodzicu i gotowe. {{< /expand >}}
 
-## Zadanie 4 - operacje niskopoziomowe na plikach
+## Zadanie 4 - operacje niskopoziomowe na plikach a sygnały
 
 Cel: Zmodyfikować program z zadania 3 tak aby proces rodzic odbierał sygnały SIGUSR1 wysyłane co zadany czas (parametr 1) i zliczał je.  Dodatkowo proces główny tworzył plik o nazwie podanej jako parametr 4 o zadanej ilości bloków o zadanym rozmiarze (parametry 2 i 3). Zawartość pliku ma pochodzić z /dev/urandom. Każdy blok kopiujemy osobno, kontrolując rozmiary. Po skopiowaniu bloku należy podać na stderr realną ilość przepisanych bloków oraz stan liczników sygnałów.
 Co student musi wiedzieć: 
-- man 3p open
-- man 3p close
-- man 3p read
-- man 3p write
 - man 4 urandom
-- man 3p mknod (tylko stałe opisujące uprawnienia do open)
-- opis makra TEMP_FAILURE_RETRY <a href="http://www.gnu.org/software/libc/manual/html_node/Interrupted-Primitives.html">tutaj</a>
 
 {{< hint info >}}
 Tym razem rozwiązanie jest podzielone na 2 możliwe do uruchomienia etapy.
@@ -302,9 +296,6 @@ Czemu uprawnienia do nowego pliku są  pełne (0777)?
 
 Uruchamiamy jak poprzednio - błędy znikają.
 
-Aby dostępne było makro `TEMP_FAILURE_RETRY` trzeba najpierw zdefiniować `GNU_SOURCE` a następnie dołączyć plik
-nagłówkowy `unistd.h`.
-
 Co to jest błąd EINTR?
 {{< expand "Odpowiedź" >}} To nie jest błąd, to tylko informacja o przerwaniu danej funkcji poprzez funkcję obsługi sygnału {{< /expand >}}
 
@@ -320,7 +311,9 @@ Jakie inne przerwania w programie może spowodować funkcja obsługi sygnału?
 Skąd wiemy, które funkcje mogą być przerwane zanim coś osiągną (EINTR)?
 {{< expand "Odpowiedź" >}} Strony man pages, dział o zwracanych błędach. Łatwo zgadnąć, że to te funkcje, które mogą/muszą czekać zanim coś zrobią. {{< /expand >}}
 
-Jako ważne ćwiczenie przeanalizuj jak działa bulk_read i bulk_write. Musisz rozumieć czemu uwzględniają tak dużo przypadków, jakie to przypadki, kiedy operacja IO może być przerwana, jak rozpoznać EOF. To na pewno będzie omawiane na zajęciach przed testem, ale najpierw sam/sama spróbuj to "rozgryźć".
+Jako ważne ćwiczenie przeanalizuj jak działa bulk_read i bulk_write. Musisz rozumieć czemu uwzględniają tak dużo przypadków, jakie to przypadki, kiedy operacja IO może być przerwana, jak rozpoznać EOF.
+W przeciwieństwie do laboratorium L1, na L2 i kolejnych trzeba używać tych funkcji (lub analogicznych) gdy używasz `read` lub `write` (ponieważ w programie mamy już sygnały).
+I brak będzie powodował odejmowanie punktów.
 
 Obie funkcje bulk_ mogą być pomocne nie tylko gdy chodzi o ochronę przed sygnałami lub sklejanie dużych transferów I/O,
 ale także tam gdzie dane nie są dostępne w sposób ciągły - pipe/fifo/gniazda które poznamy nieco później.

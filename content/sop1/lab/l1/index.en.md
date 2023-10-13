@@ -8,9 +8,7 @@ weight: 20
 
 {{< hint info >}}
 Introduction notes:
-
-- This tutorial is fairly easy and rather long, next ones will be harder and shorter
-- Quick look at this material will not suffice, you should compile and run all the programs, check how they work, read
+- A quick look at this material will not suffice, you should compile and run all the programs, check how they work, read
   additional materials like man pages. As you read the material please do all the exercises and questions. At the end
   you will find sample task similar to the one you will do during the labs, please do it at home.
 - You will find additional information in yellow sections, questions and tasks in blue ones. Under the question you will
@@ -28,54 +26,21 @@ Introduction notes:
 {{< /hint >}}
 
 
+## Task 1 - directories 1
 
-## Task 9 - directories 1
+Goal: Write a program counting objects (files, links, folders and others) in current working directory
 
-Goal: 
-Write a program counting objects (files, links, folders and others) in current working directory
 What you need to know:
 - man 3p fdopendir (only opendir)
 - man 3p closedir
 - man 3p readdir
 - man 0p dirent.h
 - man 3p fstatat (only stat and lstat)
-- man 3p errno
-- man 2 lstat (object type testing macros)
+- man sys_stat.h
+- man 7 inode (first half of the "The file type and mode" section)
 
-<em>function in <b>prog9.c</b> file:</em>
-
-```c
-void scan_dir()
-{
-	DIR *dirp;
-	struct dirent *dp;
-	struct stat filestat;
-	int dirs = 0, files = 0, links = 0, other = 0;
-	if (NULL == (dirp = opendir(".")))
-		ERR("opendir");
-	do {
-		errno = 0;
-		if ((dp = readdir(dirp)) != NULL) {
-			if (lstat(dp->d_name, &filestat))
-				ERR("lstat");
-			if (S_ISDIR(filestat.st_mode))
-				dirs++;
-			else if (S_ISREG(filestat.st_mode))
-				files++;
-			else if (S_ISLNK(filestat.st_mode))
-				links++;
-			else
-				other++;
-		}
-	} while (dp != NULL);
-
-	if (errno != 0)
-		ERR("readdir");
-	if (closedir(dirp))
-		ERR("closedir");
-	printf("Files: %d, Dirs: %d, Links: %d, Other: %d\n", files, dirs, links, other);
-}
-```
+<em>code in <b>prog9.c</b> file:</em>
+{{< includecode "prog10.c" >}}
 
 Run this program in the folder with some files but without sub-folders, it may be the folder you are working on this tutorial in. Is the folder count zero? Explain it.
 {{< expand "Answer" >}}
@@ -134,7 +99,7 @@ Good programmers always release resources, the open folder is a kind of resource
 descriptor in Linux, process can have limit on open descriptors. This gives you two good reasons not to forget closedir,
 code checking teacher may be counted as third one :-).
 
-## Task 10 - directories 2
+## Task 2 - directories 2
 
 Goal:
 Use function form prog9.c to write a program that will count objects in all the folders passed to the program as positional parameters.
@@ -170,7 +135,7 @@ Not all errors encountered in this program has to terminate it, what error can b
 Never ever code in this way: `printf(argv[i])`. What will be printed if somebody puts %d or other printf placeholders in
 the arguments? This applies to any string not only the one from arguments.
 
-## Task 11 - directories 3
+## Task 3 - directories 3
 
 Goal: 
 Write a program that counts all occurrences of the files, folders, symbolic links and other objects in a sub-trees rooted at locations indicated by parameters.  
@@ -206,7 +171,7 @@ account that the limit should be no less that the depth of the scanned tree othe
 before reaching the bottom of the tree. In Linux, descriptor limit is not defined but administrator can limit individual
 processes.
 
-## Task 12 - file access and operations 
+## Task 4 - file access and operations 
 
 Goal:
 Create a new file with name, permissions and size specified by parameters (-n NAME, -p OCTAL, -s SIZE). Content of the
@@ -225,7 +190,7 @@ What you need to know:
 <em>code for <b>prog12.c</b> file:</em>
 {{< includecode "prog12.c" >}}
 
-What bitmap is created with: `~perms&0777` ? 
+What bitmask is created with: `~perms&0777` ? 
 {{< expand "Answer" >}} 
 Reverted permission bits cut to 9 least significant bits. If you do not know how it works then learn C bit operations.
 {{< /expand >}}
@@ -299,7 +264,7 @@ Once closed by all the process it will be erased for good.
 
 You should call `srand` only once per process and make sure it gets unique seed, in this program time in seconds is sufficient.
 
-## Task 13 – stdout buffering
+## Task 5 – stdout buffering
 
 Note that this topic is less about operating systems and more about general C programming, 
 however we mention it for completeness as related issues were quite common in the past years.
@@ -352,10 +317,49 @@ error for everything else. For instance `grep` will output lines that contain th
 output, but if it can't open the file, it will complain on the standard error. Note that our `ERR` macro also
 outputs to standard error.
 
-As an exercise do <a href="{{< ref "../l1-example" >}}">this</a> task. 
-It was used in previous years in a bit different labs timing. 
-It is 60 minutes task and if you can do it in this time it means you are prepared for the lab. 
-In a new timing there is more time for the task and it will be slightly larger.
+## Task 6 - low-level file access
+
+Write a simple file-copying program.
+It should accept two file paths as arguments, and copy the file from the first path to the second one.
+
+This time to implement reading and writing we will use low-level functions, i.e. ones which are not defined by the standard C library, but which are exposed by the operating system itself. They are trickier to use, but are more universal. You can use them for e.g. network communications, which we will consider in the next semester.
+
+<em>What you need to know:</em> 
+- man 3p open
+- man 3p close
+- man 3p read
+- man 3p write
+- man 3p mknod (only open new file permissions constants)
+- macro TEMP_FAILURE_RETRY description <a href="http://www.gnu.org/software/libc/manual/html_node/Interrupted-Primitives.html">here</a>
+
+<em>code for <b>prog14.c</b> file:</em>
+{{< includecode "prog14.c" >}}
+
+For a program to see `TEMP_FAILURE_RETRY` macro you must first define `GNU_SOURCE` and then include header
+file `unistd.h`. You don't have to understand it fully for now, it will get more important during the next laboratory when we tackle signals.
+
+Why are `bulk_read` and `bulk_write` functions used in the above program?
+Would not it suffice to just call `read` or `write`?
+{{< expand "Answer" >}}
+According to the specification, `read` and `write` functions can return before reading/writing the amount of data the caller asked for.
+You will learn more about this aspect in the tutorial for the next laboratory.
+In theory this does not matter in this task (we are not using signals), but getting used to this pattern now is a recommended idea.
+{{< /expand >}}
+
+Could the above program use C library functions instead of low-level IO? (`fopen`, `fprintf`, ...)
+{{< expand "Answer" >}}
+Yes, everything done in this program could be achieved using functions introduced earlier.
+{{< /expand >}}
+
+Can you write data to a descriptor returned by `open` using `fprintf`?
+{{< expand "Answer" >}}
+No! `fprintf`, `fgets`, `fscanf` etc. function accept a variable of type `FILE*` as their argument, a descriptor on the other hand is just a number of type `int` used by the operating system to identify an open file.
+{{< /expand >}}
+
+As an exercise do <a href="{{< ref "../l1-example" >}}">this</a> task.
+It was used in previous years in a bit different labs timing.
+It is a 75 minutes task and if you can do it in this time it means you are prepared for the lab.
+Remember that during the lab you will be given 2 hours to solve a task, so expect it to be more demanding.
 
 ## Source codes presented in this tutorial
 

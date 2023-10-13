@@ -255,18 +255,12 @@ How can we run the program to lower SIGUSR2 merging chances to zero and still ob
 Correct the above program to eliminate the above problem.
 {{< expand "Answer" >}} You can have a dedicated global variable only for SIGUSR2, increasing of the counter of SIGUSR2 can run in handler itself it will eliminate the problem of multiple SIGUSR2 handler call in one sigsuspend. Modify the counter printout and it is ready. {{< /expand >}}
 
-## Task 4 - low level file access
+## Task 4 - low level file access and signals
 
 Goal:
 Modify task 3 code. Parent receives SIGUSR1 form child at set interval (1st parameter) and counts them. Additionally parent process creates a file of set (2nd parameter) amount of blocks of set size (3rd parameter) with a name given as 4th parameter. The content of the file is a copy of data read from /dev/urandom. Each block must be copied separately with sizes control. After each copy operation program prints the effective amount of data transferred and the amount of received signals on the stderr.
 <em>What you need to know:</em> 
-- man 3p open
-- man 3p close
-- man 3p read
-- man 3p write
 - man 4 urandom
-- man 3p mknod (only open new file permissions constants)
-- macro TEMP_FAILURE_RETRY description <a href="http://www.gnu.org/software/libc/manual/html_node/Interrupted-Primitives.html">here</a>
 
 {{< hint info >}}
 This task has two stages.
@@ -290,7 +284,7 @@ POSIX documentation.
 
 How to get rid of those flows is explained in the 2nd stage.
 
-If there is memory allocation in your code there MUST also be memory release! Always.
+If there is a memory allocation in your code, there also HAS to be a memory release! Always.
 
 Permissions passed to open function can also be expressed with predefined constants (man 3p mknod). As octal permission
 representation is well recognized by programmers and administrators it can also be noted in this way and will not be
@@ -331,9 +325,6 @@ Why permissions of a newly created file are supposed to be full (0777)? Are they
 
 Run it with the same parameters as before - flaws are gone now.
 
-For a program to see `TEMP_FAILURE_RETRY` macro you must first define `GNU_SOURCE` and then include header
-file `unistd.h`.
-
 What error code  EINTR represents?
 {{< expand "Answer" >}} This is not an error, it is a way for OS to inform the program that the signal handler has been invoked {{< /expand >}}
 
@@ -349,7 +340,9 @@ What are other types of interruption signal handler can cause?
 How do you know what function cat report EINTR?
 {{< expand "Answer" >}}  Read man pages, error sections. It easy to guess those function must wait before they do their job. {{< /expand >}}
 
-Analyze how bulk_read and bulk_write work. You should know what cases are recognized in those functions, what types of interruption they can handle, how to recognize EOF on the descriptor. It will be discussed during Q&amp;A session but first try on your own, it is a very good exercise.
+Analyze how bulk_read and bulk_write work. You should know what cases are recognized in those functions, what types of interruption they can handle, how to recognize EOF on the descriptor.
+Unlike during L1 lab, during L2 and following labs you have to use these functions (or similar ones) when calling `read` or `write` (because we use signals now).
+If you do not use them, you wont get points for your solution.
 
 Both bulk_ functions can be useful not only on signals but also to "glue" IO transfers where data comes from not
 continuous data sources like pipe/fifo and the socket - it wile be covered by following tutorials.
