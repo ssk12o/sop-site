@@ -661,7 +661,7 @@ First step on laboratory is copy remote repository to your local workstation wit
 $ git clone ssh://gitolite@vl01/l0en/name_surname
 ```
 
-Command creates directory with name of repository and copies files to it.
+Command creates directory with name of repository (`name_surname`) and copies files to it.
 Inside this directory you write your code.
 
 The task consists of stages.

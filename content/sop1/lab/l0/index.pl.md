@@ -685,7 +685,7 @@ Pierwszym krokiem będzie wykonanie kopii zdalnego repozytorium na swoją stacj�
 $ git clone ssh://gitolite@vl01/l0pl/imię_nazwisko
 ```
 
-Polecenie stworzy folder o nazwie `l0pl` i wykona do niego kopie plików.
+Polecenie stworzy folder o nazwie `imię_nazwisko` i wykona do niego kopie plików.
 W tym folderze należy wykonać laboratorium.
 W przypadku gdyby polecenie zakończyło się niepowodzeniem należy sprawdzić, czy dobrze wpisaliśmy w adresie repozytorium nasz login postaci `imię_nazwisko` - powinien być bez polskich znaków, taki sam jak we wspomnianych plikach na LeONie - najlepiej przekopiować stamtąd. W przypadku gdy mimo to pobieranie repozytorium nie działa należy zgłosić to prowadzącemu.
 
