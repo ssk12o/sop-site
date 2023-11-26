@@ -1,10 +1,10 @@
 ---
-title: "L3 - Threads mutexes and signals"
+title: "L3 - Threads, mutexes and signals"
 date: 2022-02-07T19:53:15+01:00
 weight: 40
 ---
 
-# Tutorial 3 - Threads mutexes and signals
+# Tutorial 3 - Threads, mutexes and signals
 
 <a href="{{< ref "../l3-test" >}}">A list of requirements for the introductory test</a>
 
