@@ -1,16 +1,18 @@
 ---
-title: "L4 - gniazda sieciowe i select"
+title: "L4 - gniazda sieciowe i epoll"
 date: 2022-02-01T19:51:45+01:00
 weight: 30
 ---
 
+{{< hint warning >}}
+W tym tutorialu do czekania na wielu deskryptorach używamy funkcji z rodziny `epoll`, które nie są częścią standardu POSIX, ale rozszerzeniem Linuxa. Przy pisaniu kodu przenośnego między systemami należy użyć funkcji z rodziny `select` lub `poll`, które jednak cechują się gorszą wydajnością a ich użycie jest mniej wygodne. 
+{{< /hint >}}
+
 Uwagi wstępne:
 
-1. W trakcie tych zajęć przydatny jest [program netcat]({{< ref "../netcat" >}})
+1. W trakcie tych zajęć przydatny jest [program netcat]({{< ref "/sop2/lab/netcat" >}})
 1. Obowiązują wszystkie materiały z SOP1 i SOP2 jakie były do tej pory, szczególnie ważne są te dotyczące wątków i procesów!
 1. Szybkie przejrzenie tutoriala prawdopodobnie nic nie pomoże, należy samodzielnie uruchomić programy, sprawdzić jak działają, poczytać materiały dodatkowe takie jak strony man. W trakcie czytania sugeruję wykonywać ćwiczenia a na koniec przykładowe zadanie.
-1. Na żółtych polach podaję dodatkowe informacje, niebieskie zawierają pytania i ćwiczenia. Pod pytaniami znajdują się odpowiedzi, które staną się widoczne dopiero po kliknięciu. Proszę najpierw spróbować sobie odpowiedzieć na pytanie samemu a dopiero potem sprawdzać odpowiedź.
-1. Pełne kody do zajęć znajdują się w załącznikach na dole strony. W tekście są tylko te linie kodu, które są konieczne do zrozumienia problemu.
 1. Materiały i ćwiczenia są ułożone w pewną logiczną całość, czasem do wykonania ćwiczenia konieczny jest stan osiągnięty poprzednim ćwiczeniem dlatego zalecam wykonywanie ćwiczeń w miarę przyswajania materiału.
 1. Większość ćwiczeń wymaga użycia konsoli poleceń, zazwyczaj zakładam, ze pracujemy w jednym i tym samym katalogu roboczym więc wszystkie potrzebne pliki są "pod ręką" tzn. nie ma potrzeby podawania ścieżek dostępu.
 1. Czasem podaję znak $ aby podkreślić, że chodzi o polecenie konsolowe, nie piszemy go jednak w konsoli np.: piszę "$make" w konsoli wpisujemy samo "make".
@@ -33,9 +35,6 @@ Napisz prosty sieciowy kalkulator liczb całkowitych. Dane przesyłane pomiędzy
 - status
 Wszystko przekonwertowane do postaci 32 bitowych liczb w tablicy.
 
-Czemu nie struktura? 
-{{< answer >}} Struktury bez pakowania są mniej przenośne ze względu na optymizację adresacji pamięci - różne przerwy pomiędzy polami, w tym przypadku łatwiej wyślemy tablice, która nie ma tej przypadłości co struktura. {{< /answer >}} 
-
 Serwer wylicza wynik i odsyła go do klienta. Jeśli wyliczenie przebiegło pomyślnie pole status przyjmuje wartość 1, jeśli nie (np. dzielenie przez zero) wartość 0. Komunikacja z serwerem jest możliwa na 2 sposoby:
 - gniazda lokalne
 - gniazda sieciowe tcp
@@ -53,46 +52,58 @@ Należy napisać 2 programy klientów, po jednym dla każdego typu połączenia,
 Jeśli wyliczenie się uda należy wyświetlić wynik. 
 Wszystkie 3 programy można przerwać C-c, nie wolno po sobie zostawiać pliku połączenia lokalnego.
 		
-### Etap 1
-
-Cel:
-
-Serwer akceptuje połączenia lokalne
-Klient do połączeń lokalnych
+### Rozwiązanie
 
 Co student musi wiedzieć:
 ```
 man 7 socket
+man 7 epoll
 man 7 unix
+man 7 tcp
 man 3p socket
 man 3p bind
 man 3p listen
 man 3p connect
 man 3p accept
-man 3p pselect
+man 2 epoll_create
+man 2 epoll_ctl
+man 2 epoll_wait
+man 3p freeaddrinfo (obie funkcje, getaddrinfo też)
+man 3p gai_strerror
 ```
 
+Zwróć uwagę zwłaszcza na sekcję Q&A w `man 7 epoll`. Ponieważ jest bardzo dobrze przygotowana, nie będziemy jej tutaj powtarzać.
 
-rozwiązanie `prog23a_s.c`:
-{{< includecode "prog23a_s.c" >}}
-rozwiązanie `prog23_local.c`:
-{{< includecode "prog23_local.c" >}}
+
+Wspólna biblioteka dla wszystkich kodów w tym tutorialu:
+{{< includecode "l4_common.h" >}}
+
+serwer `l4-1_server.c`:
+{{< includecode "l4-1_server.c" >}}
+klient lokalny `l4-1_client_local.c`:
+{{< includecode "l4-1_client_local.c" >}}
+klient TCP `l4-1_client_tcp.c`:
+{{< includecode "l4-1_client_tcp.c" >}}
+
 Uruchomienie:
 ```
-$ ./prog23a_s a 2000&
-$ ./prog23_local a 2 1 +
-$ ./prog23_local a 2 1 '*'
-$ ./prog23_local a 2 0 /
+$ ./l4-1_server a 2000&
+$ ./l4-1_client_local a 2 1 +
+$ ./l4-1_client_local a 2 1 '*'
+$ ./l4-1_client_local a 2 0 /
+$ ./l4-1_client_tcp localhost 2000 234 17  /
+
 $ killall -s `SIGINT` prog23a_s
+
 ```
 
-Zwróć uwagę, że funkcje make_socket i bind_socket, connect_socket i add_new_cleint  nadają się do biblioteki. Ich działanie powinno być oczywiste. Schemat nawiązania połączenia sieciowego był omówiony na wykładzie.
+W tym rozwiązaniu (a także następnego zadania) wszystkie programy korzystają ze wspólnej biblioteki - inaczej każdy z nich musiałby implementować funkcje w rodzaju `bulk_read` co bardzo zwiększyłoby objętość kodu.
 
-Może zastanawiać czemu stała `BACKLOG` jest ustalona na 4 a nie 5, 7 czy 9? To może być dowolna mała liczna, to tylko wskazówka dla systemu, ten program nie będzie obsługiwał dużego ruchu i kolejka czekających połączeń nie będzie nigdy duża, w praktyce połączenia są tu od razu realizowane. Przy większym ruchu trzeba empirycznie sprawdzać jaka wartość tego parametru dobrze się spisze i niestety będzie ona inna na różnych systemach. 
+Może zastanawiać czemu stała `BACKLOG` jest ustalona na 3 a nie 5, 7 czy 9? To może być dowolna mała liczna, to tylko wskazówka dla systemu, ten program nie będzie obsługiwał dużego ruchu i kolejka czekających połączeń nie będzie nigdy duża, w praktyce połączenia są tu od razu realizowane. Przy większym ruchu trzeba empirycznie sprawdzać jaka wartość tego parametru dobrze się spisze i niestety będzie ona inna na różnych systemach.
 
 W programie używamy makra `SUN_LEN`, czemu nie sizeof? Oba rozwiązania działają poprawnie. Warto wiedzieć, że użycie zwykłego sizeof zwróci większy rozmiar niż makro a to dlatego, że rozmiar liczony przez makro to suma pól struktury (czyli typ i string) a rozmiar podany przez sizeof dodaje jeszcze kilka bajtów przerwy pomiędzy tymi polami. Implementacja oczekuje mniejszej z tych dwóch wartości ale podanie większej nic nie zepsuje ponieważ sam adres jest w postaci ciągu znaków zakończonego zerem. Co zatem wybrać? W materiałach wybieramy zgodność ze standardem czyli makro zatem oszczędzamy te kilka bajtów kosztem nieco dłuższego wyliczania rozmiaru. Jeśli użyjesz sizeof to nie będzie to traktowane jako błąd.
 
-Dość nietypowy kod po wywołaniu funkcji connect wynika z faktu, że standard POSIX mówi, że nawiązanie połączenia sieciowego nie może być przerwane (co jest dość logiczne ponieważ biorą w nim udział dwie strony). Zatem jeśli funkcja obsług sygnału przerwie connect to tak naprawdę jego nawiązywanie nadal trwa asynchronicznie względem głównego kodu. Próba restartu funkcji np. makrem `TEMP_FAILURE_RETRY` nie jest już możliwa (spowoduje błąd `EALREADY`). Pozostaje nam jedynie poczekać aż połączenie będzie nawiązane, ale jak się o tym dowiemy? Deskryptor gniazda będzie w stanie zaakceptować zapis. Zatem przy pomocy funkcji select czekamy na możliwość zapisu do gniazda aby wiedzieć że połączenie jest otwarte. Co jeśli połączenie się nie uda? Select się zakończy a o błędach połączenia dowiemy się dzięki wywołaniu funkcji getsockopt, która z podanymi w kodzie stałymi zwraca tzw. network pending errors, czyli właśnie informację o ewentualnej porażce. Bez tego sprawdzenia, o błędzie dowiedzielibyśmy się  dopiero podczas próby komunikacji przez to gniazdo sieciowe.
+Standard POSIX mówi, że nawiązanie połączenia sieciowego nie może być przerwane (co jest dość logiczne ponieważ biorą w nim udział dwie strony). Zatem jeśli funkcja obsług sygnału przerwie `connect` to tak naprawdę jego nawiązywanie nadal trwa asynchronicznie względem głównego kodu. Próba restartu funkcji np. makrem `TEMP_FAILURE_RETRY` nie jest już możliwa (spowoduje błąd `EALREADY`). W kodzie naszego klienta nie obsługujemy sygnałów, co jednak, gdybyśmy to robili? Należy sprawdzić, czy `errno` jest równe `EINTR` i w takim wypadku użyć funkcji `select`, `poll` albo `epoll*` żeby poczekać aż będzie możliwy zapis.
 
 Można od razy zażyczyć sobie asynchronicznego połączenia, wystarczy przed wywołaniem connect ustawić na deskryptorze gniazda flagę `O_NONBLOC`. Nawiązywanie połączenia jest dość czasochłonne i jest to sposób aby w czasie oczekiwania program mógł coś wykonać.
 
@@ -103,73 +114,32 @@ Warto zapytać czemu służą makra ntohl i htonl użyte do konwersji byte order
 
 W kodzie używana jest funkcja `bulk_read`, trzeba wiedzieć, że w takiej postaci jak powyżej ta funkcja nie potrafi sobie poradzić z deskryptorem w trybie nieblokującym - zwróci błąd `EAGAIN`. Czy w tym przypadku mamy taki deskryptor? Nowo otwarte (przez f. accept) połączenie dostaje  nowy deskryptor, jego flagi nie muszą być dziedziczone (na Linuksie nie są) z deskryptora gniazda nasłuchującego. W tym programie nie będzie problemu bo wiemy, że dane już czekają na odbiór i pod Linuksem mamy tryb blokujący ale warto może przerobić funkcję bulk_read tak aby czekała na dane gdy gniazdo jest w trybie nieblokującym.
 
+Obowiązuje Państwa użycie funkcji getaddrinfo, starsza funkcja gethostbyname  jest w dokumentacji oznaczona jako przestarzała i ma nie być używana w pracach studenckich.
+
 
 Jak po uruchomieniu serwera można podejrzeć plik gniazda? 
-{{% answer %}} `$ls -l a AAAAA`  {{% /answer %}}
+{{% answer %}} `$ls -l a`  {{% /answer %}}
 
-Czym jest w programie wywołanie pselect?
+Czym jest w programie wywołanie `epoll_pwait`?
 {{< answer >}} Jest punktem w którym program czeka na dostępność danych na wielu deskryptorach oraz na nadejście sygnału `SIGINT` {{< /answer >}}
 
-Czy można użyć tu select a zamiast pselect?
+Czy można użyć tu `epoll_wait` a zamiast `epoll_pwait`?
 {{< answer >}} Można ale nie warto bo dodanie poprawnej obsługi `SIGINT` będzie wtedy bardziej pracochłonne {{< /answer >}}
 
-Skoro czekamy tylko na połączenie na jednym deskryptorze to może warto pozbyć się pselect zupełnie?</br>
-{{< answer >}} Nie warto, bo za chwilę w drugim etapie dodamy czekanie na drugim deskryptorze, dodatkowo implementacja prawidłowej obsługi sygnału `SIGINT` będzie pracochłonna. {{< /answer >}}
-
 Czemu gniazdo sieciowe jest w trybie nieblokującym? 
-{{< answer >}} Bez tego trybu mogłoby się zdarzyć, że klient który chce się połączyć "zginie" pomiędzy select, które potwierdzi gotowość do połączenia a accept, które faktycznie przyjmie to połączenie. Wtedy na nieblokującym gnieździe program zatrzymałby się aż do nadejścia kolejnego połączenia nie reagując na sygnał `SIGINT`. {{< /answer >}}
+{{< answer >}} Bez tego trybu mogłoby się zdarzyć, że klient który chce się połączyć "zginie" pomiędzy `epoll_pwait`, które potwierdzi gotowość do połączenia a `accept`, które faktycznie przyjmie to połączenie. Wtedy na blokującym gnieździe program zatrzymałby się aż do nadejścia kolejnego połączenia nie reagując na sygnał `SIGINT`. {{< /answer >}}
 
 Czemu użyto `int32_t` (stdint.h) a nie zwykły int? 
-{{< answer >}} Ze względu na różne rozmiary int'a  na różnych architekturach co stanie się ważne w 2 etapie. {{< /answer >}}
+{{< answer >}} Ze względu na różne rozmiary int'a  na różnych architekturach. {{< /answer >}}
 
 Czemu ignorujemy `SIGPIPE` w serwerze?
 {{< answer >}} Łatwiej obsłużyć błąd `EPIPE` niż sygnał, zwłaszcza, że informacja o przedwczesnym zakończeniu się klienta nie może prowadzić do zamknięcia serwera. {{< /answer >}}
-
-Czy musimy ignorować `SIGPIPE` w kliencie ? 
-{{< answer >}} Nie, robimy to "na zapas", błąd `EPIPE` w kliencie i tak traktujemy jako krytyczny, klient bez serwera nie może działać dalej zatem gdyby nie ignorować `SIGPIPE` program kończyłby się i tak tylko że zabity sygnałem. {{< /answer >}}
 
 Czemu w programie użyto bulk_read i bulk_write? Nie ma obsługi sygnałów poza `SIGINT`, który i tak kończy działanie programu. 
 {{< answer >}} Z tego samego powodu dla którego tak często `EINTR` jest obsłużony - przenośność kodu do innych rozwiązań. {{< /answer >}}
 
 Czemu służy unlink w kodzie serwera? 
 {{< answer >}} Usuwamy gniazdo lokalne tak samo jak usuwamy plik -  funkcja porządkowa. {{< /answer >}}
-
-		
-### Etap 2
-
-Cel:
-
-Serwer akceptuje połączenia sieciowe TCP
-Klient sieciowy TCP
-
-Co student musi wiedzieć:
-
-- man 7 tcp
-- man 3p freeaddrinfo (obie funkcje, getaddrinfo też)
-- man 3p gai_strerror
-
-rozwiązanie `prog23b_s.c`:
-{{< includecode "prog23b_s.c" >}}
-
-rozwiązanie `prog23_tcp.c`:
-{{< includecode "prog23_tcp.c" >}}
-
-Uruchomienie: 
-```
-$ ./prog23b_s a 2000&
-$ ./prog23_tcp localhost 2000 234 17  /
-$ ./prog23_local a 2 1 '*'
-$ killall -s SIGINT prog23b_s
-Dobierzcie się w pary, podajcie sobie swoje nazwy hosta (są w linii komend, np: p21804), niech każdy uruchomi serwer a potem wyśle zapytanie do sąsiada:
-$ ./prog23b_s a 2000 &
-$ ./prog23_tcp p21804 2000  2 2  +
-...
-$ killall -s SIGINT prog23b_s
-```
-
-
-Zwróć uwagę na rozwinięcie funkcji obsługi połączenia make_socket, bind_local_socket, bind_tcp_socket tak aby objąć też TCP, klient TCP ma także przydatne funkcje make_socket i make_address, inne niż w kliencie lokalnym które warto włączyć do biblioteki własnych funkcji.
-Obowiązuje Państwa użycie funkcji getaddrinfo, starsza funkcja gethostbyname  jest w dokumentacji oznaczona jako przestarzała i ma nie być używana w pracach studenckich.
 
 Czemu służy opcja gniazda SO_REUSEADDR? 
 {{< answer >}} Dodanie tej opcji pozwala na szybkie ponowne wykorzystanie tego samego portu serwera, jest to ważne gdy chcemy szybko poprawić jakiś błąd w kodzie i ponownie uruchomić program. Bez tej opcji system blokuje dostęp do portu na kilka minut. {{< /answer >}}
@@ -179,8 +149,6 @@ Czy powyższa opcja nie naraża nas na błędy komunikacji wynikające z możliw
 
 Co to za adres INADDR_ANY i czemu jest często używany jako adres lokalny?
 {{< answer >}} To adres specjalny postaci 0.0.0.0, który ma szczególne znaczenie w adresacji. Oznacza dowolny adres. Jeśli gniazdu serwera (nasłuchującemu) damy taki adres to oznacza, że jakiekolwiek połączenie nadejdzie do serwera, niezależnie jak zaadresowane to będzie przyjęte. To oczywiście nie oznacza, że przechwycimy wszystkie połączenia  w sieci, to oznacza, że nie jest ważne jaki adres w sieci ma serwer (może mieć nawet kilka) jeśli tylko ustawienia sieci spowodują, że połączenie będzie kierowane na dany serwer to nasz program na nim będzie mógł je przyjąć nie znając swojego faktycznego lokalnego adresu!  {{< /answer >}}
-
-Przeanalizuj jak został w serwerze rozwinięty pselect aby obsłużyć drugi typ połączenia. Zwrócić uwagę, że dodanie TCP w serwerze wymagało tylko dodania kodu nawiązania połączenia, reszta jest ta sama.
 
 Kod klienta jest bardzo podobny do klienta lokalnego, jako ćwiczenie proponuję zintegrowanie tych kodów do jednego programu z przełącznikiem -p local|tcp
 
@@ -221,11 +189,11 @@ Co student musi wiedzieć:
 - man 3p recv
 - man 3p send
 
-rozwiązanie `prog24s.c`:
-{{< includecode "prog24s.c" >}}
+rozwiązanie `l4-2_server.c`:
+{{< includecode "l4-2_server.c" >}}
 
-rozwiązanie `prog24c.c`:
-{{< includecode "prog24c.c" >}}
+rozwiązanie `l4-2_client.c`:
+{{< includecode "l4-2_client.c" >}}
 
 
 Zwróć uwagę, że w protokole UDP nie nawiązujemy połączenia, gniazda komunikują się ze sobą "ad hoc". Nie ma gniazda nasłuchującego. Możliwe są straty, duplikaty i zmiany kolejności datagramów.
@@ -271,8 +239,14 @@ Przeanalizuj jak działa limitowanie do 5 połączeń, zwróć uwagę na pole fr
 
 
 ## Przykładowe zadanie
-Wykonaj przykładowe [ćwiczenie]({{< ref "../l4-example">}}") z poprzednich lat. To zadanie szacuję na 60 minut, jeśli wyrobisz się w tym czasie to znaczy, że jesteś dobrze przygotowany/a do zajęć.
-
+Wykonaj przykładowe [ćwiczenie]({{< ref "/sop2/lab/l4-example">}}) z poprzednich lat. To zadanie szacuję na 60 minut, jeśli wyrobisz się w tym czasie to znaczy, że jesteś dobrze przygotowany/a do zajęć.
 
 ## Kody źródłowe z treści tutoriala
 {{% codeattachments %}}
+
+## Materiały dodatkowe
+
+ - <http://cs341.cs.illinois.edu/coursebook/Networking#layer-4-tcp-and-client>
+ - <http://cs341.cs.illinois.edu/coursebook/Networking#layer-4-tcp-server>
+ - <http://cs341.cs.illinois.edu/coursebook/Networking#non-blocking-io>
+ 
