@@ -25,10 +25,10 @@ Uwagi wstępne:
   poćwiczyć a jeśli trzeba dopytać się u prowadzących.
 - Ten tutorial opiera się na przykładach od naszego studenta, drobne ich słabości występują jedynie w częściach nie
   związanych z wątkami i zostawiłem je celowo. Są one omawiane w komentarzach i zadaniach. To co się powtarza to:
-- Funkcje main są za długie, można je łatwo podzielić
-- Nadużywany jest typ bool, wymaga to nawet specjalnego pliku nagłówkowego, prościej i bardziej klasycznie można użyć 0
-  i 1
-- Pojawiają się "magic numbers" - stałe liczbowe zamiast zdefiniowanych makr
+  - Funkcje main są za długie, można je łatwo podzielić
+  - Nadużywany jest typ bool, wymaga to nawet specjalnego pliku nagłówkowego, prościej i bardziej klasycznie można użyć 0
+    i 1
+  - Pojawiają się "magic numbers" - stałe liczbowe zamiast zdefiniowanych makr
 {{< /hint >}}
 
 _Ten tutorial został przygotowany w oparciu o pomysły na zadania i ich rozwiązania przygotowane przez studenta Mariusza Kowalskiego._
@@ -291,7 +291,11 @@ Jako ćwiczenie popraw sposób losowania "żyjącego" wątku do anulowania.
 
 Zwróć uwagę na sposób odliczenia 4 sekund w losowych interwałach za pomocą clock_gettime i nanosleep,  to można zmienić, dodając wywołanie f.alarm i oddając obsługę sygnału SIGALRM. Rozwiązanie takie można wykonać jako ćwiczenie.
 
-Wykonaj przykładowe <a href="{{< ref "/sop1/lab/l3/example1" >}}">ćwiczenie</a> z poprzednich lat. To zadanie szacuję na 60 minut, jeśli wyrobisz się w tym czasie to znaczy, że jesteś dobrze przygotowany/a  do zajęć. Pamiętaj, że w aktualnym układzie zajęć będzie dane zadnie na około 1,5 godziny, więc trochę bardziej pracochłonne.
+Wykonaj przykładowe zadania. Podczas laboratorium będziesz miał więcej czasu oraz dostępny startowy kod, jeśli jednak wykonasz poniższe zadania w przewidzianym czasie, to znaczy, że jesteś dobrze przygotowany do zajęć.
+
+- [Zadanie 1]({{< ref "/sop1/lab/l3/example1" >}}) ~60 minut
+- [Zadanie 2]({{< ref "/sop1/lab/l3/example2" >}}) ~120 minut
+- [Zadanie 3]({{< ref "/sop1/lab/l3/example3" >}}) ~100 minut
 
 ## Kody źródłowe z treści tutoriala
 
