@@ -2,29 +2,27 @@
 title: "Harmonogram"
 ---
 
-Semestr letni 2023/2024
-
 ## Wykłady
 
-Wtorki, g. 8:30 - 10:00, s. 328
+Wtorki, g. 10:15 - 12:00, s. 329
 
 | Data  | Tytuł                                                                                           |
 |-------|-------------------------------------------------------------------------------------------------|
-| 20.02 | [Wprowadzenie do komunikacji międzyprocesowej (IPC). Łącza.]({{< ref "wyk/w1" >}})              |
-| 27.02 | [Komunikacja międzyprocesowa POSIX: pamięć wspólna i kolejki komunikatów]({{< ref "wyk/w2" >}}) |
-| 05.03 | [Synchronizacja niskopoziomowa.]({{< ref "wyk/w3" >}})                                          |
-| 12.03 | [Synchronizacja POSIX.]({{< ref "wyk/w4" >}})                                                   |
-| 19.03 | [Zakleszczenia.]({{< ref "wyk/w3" >}})                                                          |
-| 26.03 | [Wprowadzenie do sieci TCP/IP.]({{< ref "wyk/w5" >}})                                           |
-| 09.04 | [Interfejs gniazd.]({{< ref "wyk/w6" >}})                                                       |
-| 16.04 | [Programowanie sieciowe.]({{< ref "wyk/w7" >}})                                                 |
-| 23.04 | **Kolokwium 1.**, [Zagadnienia bezpieczeństwa sieciowego.]({{< ref "wyk/w8" >}})            |
-| 07.05 | [Zarządzanie pamięcią operacyjną.]({{< ref "wyk/w9" >}})                                        |
-| 14.05 | [Pamięć wirtualna.]({{< ref "wyk/w10" >}})                                                      |
-| 21.05 | [Systemy plików.]({{< ref "wyk/w11" >}})                                                        |
-| 28.05 | [Realizacje systemów plików.]({{< ref "wyk/w12" >}}), Rozproszone systemy plików.               |
-| 04.06 | [Systemy czasu rzeczywistego.]({{< ref "wyk/w13" >}})                                           |
-| 11.06 | **Kolokwium 2.**, [Ochrona i bezpieczeństwo.]({{< ref "wyk/w14" >}})                       |
+| 25.02 | [Wprowadzenie do komunikacji międzyprocesowej (IPC). Łącza.]({{< ref "wyk/w1" >}})              |
+| 04.03 | [Komunikacja międzyprocesowa POSIX: pamięć wspólna i kolejki komunikatów]({{< ref "wyk/w2" >}}) |
+| 11.03 | [Synchronizacja niskopoziomowa.]({{< ref "wyk/w3" >}})                                          |
+| 18.03 | [Synchronizacja POSIX.]({{< ref "wyk/w4" >}})                                                   |
+| 25.03 | [Zakleszczenia.]({{< ref "wyk/w3" >}})                                                          |
+| 01.04 | [Wprowadzenie do sieci TCP/IP.]({{< ref "wyk/w5" >}})                                           |
+| 07.04 | [Interfejs gniazd.]({{< ref "wyk/w6" >}})                                                       |
+| 15.04 | [Programowanie sieciowe.]({{< ref "wyk/w7" >}})                                                 |
+| 29.04 | **Kolokwium 1.**, [Zagadnienia bezpieczeństwa sieciowego.]({{< ref "wyk/w8" >}})            |
+| 06.05 | [Zarządzanie pamięcią operacyjną.]({{< ref "wyk/w9" >}})                                        |
+| 13.05 | [Pamięć wirtualna.]({{< ref "wyk/w10" >}})                                                      |
+| 20.05 | [Systemy plików.]({{< ref "wyk/w11" >}})                                                        |
+| 27.05 | [Realizacje systemów plików.]({{< ref "wyk/w12" >}}), Rozproszone systemy plików.               |
+| 03.06 | [Systemy czasu rzeczywistego.]({{< ref "wyk/w13" >}})                                           |
+| 10.06 | **Kolokwium 2.**, [Ochrona i bezpieczeństwo.]({{< ref "wyk/w14" >}})                       |
 
 ## Laboratorium
 
