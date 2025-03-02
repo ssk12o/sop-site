@@ -20,7 +20,7 @@ menu:
 
 - Franciszek Jełowicki *koordynator*
 - Tomasz Herman
-- Maciej Spychała
-- Krzysztof Smogór
 - Szymon Zyguła
+- Piotr Krasowski
+- Szymon Tur
 

@@ -20,6 +20,6 @@ menu:
 
 - Franciszek Jełowicki *lab coordinator*
 - Tomasz Herman
-- Maciej Spychała
-- Krzysztof Smogór
 - Szymon Zyguła
+- Piotr Krasowski
+- Szymon Tur
