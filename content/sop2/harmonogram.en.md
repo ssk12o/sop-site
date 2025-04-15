@@ -33,5 +33,5 @@ Thursdays, 14:15 - 16:30
 | 20.03 | [Lab5 FIFO/pipe]({{< ref "lab/l5">}})                                        |
 |  3.04 | [Lab6 POSIX queues]({{< ref "lab/l6">}})                                     |
 | 24.04 | [Lab7 Shared memory and mmap]({{< ref "lab/l7">}})                           |
-| 15.05 | [Lab8 Sockets, TCP, UDP, epoll]({{< ref "lab/l8">}})                         |
+| 22.05 | [Lab8 Sockets, TCP, UDP, epoll]({{< ref "lab/l8">}})                         |
 | 29.05 | Retakes                                                                      |
