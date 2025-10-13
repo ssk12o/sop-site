@@ -8,7 +8,7 @@ weight: 30
 
 {{< hint info >}}
 
-This section of tutorial has to be done during the laboratory on faculty.
+This section of tutorial has to be done during the laboratory on faculty (W1).
 Before starting you have to read section about [GIT]({{< ref "/info/git" >}}) usage.
 Steps below require access to server available only during laboratory.
 I encourage you to read it and prepare before zeroth laboratory.
@@ -33,7 +33,7 @@ chmod 600 ~/.ssh/id_ed25519
 
 First step on laboratory is copy remote repository to your local workstation with command 
 ```shell
-$ git clone ssh://gitolite@vl01/l0en/name_surname
+$ git clone ssh://gitolite@vl01/w1en/name_surname
 ```
 
 Command creates directory with name of repository (`name_surname`) and copies files to it.

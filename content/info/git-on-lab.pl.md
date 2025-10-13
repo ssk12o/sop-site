@@ -8,7 +8,7 @@ weight: 30
 
 {{< hint info >}}
 
-Tą sekcję należy wykonać w sali na laboratorium L0.
+Tą sekcję należy wykonać w sali na pierwszym laboratorium (W1).
 Przed przejściem przez tą sekcję trzeba zapoznać się z opisem użycia [GITa]({{< ref "/info/git" >}})
 Wymaga ona dostępu do serwera działającego tylko w trakcie trwania laboratorium.
 Zachęcam jednak do przeczytania jej i przygotowania się do wykonania poniższych kroków.
@@ -30,10 +30,10 @@ chmod 600 ~/.ssh/id_ed25519
 Pierwszym krokiem będzie wykonanie kopii zdalnego repozytorium na swoją stację roboczą poleceniem
 
 ```shell
-$ git clone ssh://gitolite@vl01/l0pl/imię_nazwisko l0
+$ git clone ssh://gitolite@vl01/w1pl/imię_nazwisko w1
 ```
 
-Polecenie stworzy folder o nazwie `l0` i wykona do niego kopie plików.
+Polecenie stworzy folder o nazwie `w1` i wykona do niego kopie plików.
 Ostatni parametr polecenia określa nazwę folderu, który zostanie stworzony dla repozytorium - tak więc na kolejnych laboratoriach może to być `l1`, `l2` etc.
 Jeżeli nie podamy żadnej nazwy git domyślnie utworzy folder o takiej samej nazwie jak nazwa repozytorium - w tym wypadku `imię_nazwisko`.
 
