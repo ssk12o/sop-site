@@ -8,6 +8,7 @@ title: "Materiały pomocnicze"
 - [Interfejs systemu plików.]({{< ref "wyk/w2">}})
 - [Procesy]({{< ref "wyk/w4">}})
 - [Procesy i sygnały POSIX]({{< ref "wyk/w5">}})
+- [Zdarzenia]({{< ref "wyk/events">}})
 - [Wątki. P-wątki i muteksy]({{< ref "wyk/w6">}})
 - [Synchronizacja]({{< ref "wyk/w7" >}})
 

@@ -8,6 +8,7 @@ title: "Reference material"
 - [File system and its interface.]({{< ref "wyk/w2" >}})
 - [Processes.]({{< ref "wyk/w4" >}})
 - [POSIX signals.]({{< ref "wyk/w5" >}})
+- [Event I/O]({{< ref "wyk/events" >}})
 - [Threads. P-threads and mutexes.]({{< ref "wyk/w6" >}})
 - [Synchronization.]({{< ref "wyk/w7" >}})
 

@@ -12,9 +12,9 @@ title: "Harmonogram"
 | 15.10.2025 | [System plików i jego interfejs.]({{< ref "wyk/w2" >}})          |
 | 22.10.2025 | [System plików i jego interfejs.]({{< ref "wyk/w2" >}})          |
 | 29.10.2025 | [Procesy]({{< ref "wyk/w4" >}})                                  |
-| 5.11.2025  | [Sygnały POSIX]({{< ref "wyk/w5" >}})                            |
-| 12.11.2025 | Interfejs `inotify` (?)                                          |
-| 19.11.2025 | Interfejs `io_uring` (?)                                         |
+| 5.11.2025  | [Procesy]({{< ref "wyk/w4" >}})                                  |
+| 12.11.2025 | [Sygnały POSIX]({{< ref "wyk/w5" >}})                            |
+| 19.11.2025 | [Zdarzenia]({{< ref "wyk/events" >}})                            |
 | 26.11.2025 | [Wątki. P-wątki i muteksy.]({{< ref "wyk/w6" >}})                |
 | 3.12.2025  | [Synchronizacja]({{< ref "wyk/w7" >}})                           |
 | 10.12.2025 | [Synchronizacja]({{< ref "wyk/w7" >}})                           |
